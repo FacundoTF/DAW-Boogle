@@ -1,0 +1,67 @@
+html{
+    background-color: #FFCAAF;
+}
+
+header{
+    height: 110px;
+    margin: 0px 0px 32px 0px;
+    text-align: left;
+    background-color: #003550;
+    color: #ffffff;
+}
+header>h1{
+    position: relative;
+    left: 50px;
+    top: 35px;
+    margin: 0px;
+}
+footer{
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    background-color: #003550;
+    color: #ffffff;
+}
+
+#LogoConteiner{
+    position: relative;
+    bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#Logo{
+    margin: 0;
+    width: 350px;
+    height: 60px;
+    justify-items: center;
+    font-size: 60px
+}
+
+#Registro{
+    position: relative;
+    display: flex;
+    margin: 15px;
+    flex-direction: column;
+}
+
+#Registro>input{
+    margin: 15px;
+    align-self: center;
+    height: 60px;
+    width: 90%;
+    font-size: xx-large;
+}
+
+#Registro>label{
+    position: relative;
+    left: 50px;
+    font-size: xx-large;
+}
+
+#Registro>button{
+    left: 50px;
+    width: 80%;
+    height: 90px;
+    align-self: center;
+}

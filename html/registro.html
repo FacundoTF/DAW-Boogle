@@ -16,10 +16,16 @@
     </header>
     <main>
         <form id="Registro">
-            <label for="NombreUsuario">Nombre</label>
+            <label>Nombre</label>
             <input type="text" id="EntradaNombre">
-            <button class="Boton" type="button">Inicio</button>
+            <button class="Boton" type="button" id="BotonInicio">Inicio</button>
         </form>
+        <div id="AlertaModal">
+            <div>
+                <p>El nombre seleccionado no es valido</p>
+                <button id="AlertaModalBoton">Aceptar</button>
+            </div>
+        </div>
     </main>
     <footer>
         <p>Hecho por:</p>
@@ -28,6 +34,7 @@
             <li>Farneda, Facundo Tomás</li>
         </ul>
         <p id="Año">2024</p>
-    </footer>    
+    </footer>
+    <script src="../scripts/registro.js"></script>  
 </body>
 </html>

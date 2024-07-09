@@ -1,3 +1,7 @@
+*{
+    z-index: auto;
+}
+
 html{
     background-color: #FFCAAF;
 }

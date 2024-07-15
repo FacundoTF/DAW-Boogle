@@ -3,9 +3,10 @@ var AlertaModal = document.getElementById("AlertaModal")
 document.querySelector("#BotonInicio").addEventListener("click", (event) => {
     var nombre = document.querySelector("#EntradaNombre").value
     var nombreValido = validarNombre(nombre)
-    
-    if(!nombreValido){
-        AlertaModal.style.visibility = "visible"
+
+    debugger
+    if(nombreValido === false){
+        AlertaModal.style.display = "flex"
         return
     }
 
@@ -14,7 +15,7 @@ document.querySelector("#BotonInicio").addEventListener("click", (event) => {
 })
 
 document.querySelector("#AlertaModalBoton").addEventListener("click", event => {
-    AlertaModal.style.visibility = "hidden"
+    AlertaModal.style.display = "none"
 })
 
 function validarNombre(nombre){

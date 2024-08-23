@@ -11,7 +11,7 @@ document.querySelector("#BotonInicio").addEventListener("click", (event) => {
     }
 
     sessionStorage.setItem("Jugador", nombre)
-    window.open("", "_self",)//En el primer parametro debe ir a la pagina del juego
+    window.open("/html/juego.html", "_self",)//En el primer parametro debe ir a la pagina del juego
 })
 
 document.querySelector("#AlertaModalBoton").addEventListener("click", event => {

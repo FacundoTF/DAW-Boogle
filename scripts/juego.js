@@ -21,6 +21,12 @@ async function verificarPalabra(palabra) {
 
 async function formarPalabra(palabra) {
     //El parámetro de la función "verificarPalabra" debería estar la palabra que formó el jugador
+    if(typeof(palabra) != "string"){
+        return
+    }
+    if(palabra.length < 3){
+        return
+    }
     var palabraValida = await verificarPalabra(palabra)
     if(palabraValida === true){
         //La palabrá se encontró y deben sumarse puntos
@@ -29,4 +35,4 @@ async function formarPalabra(palabra) {
     }
 }
 
-formarPalabra("Hello")
+formarPalabra("He")

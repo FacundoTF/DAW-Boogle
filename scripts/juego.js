@@ -30,9 +30,12 @@ async function formarPalabra(palabra) {
     var palabraValida = await verificarPalabra(palabra)
     if(palabraValida === true){
         //La palabrá se encontró y deben sumarse puntos
+        sumarPuntos()
     }else{
         //La palabrá no se encontró
+        restarPuntos()
     }
 }
+
 
 formarPalabra("He")

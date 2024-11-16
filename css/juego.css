@@ -1,0 +1,8 @@
+#TablaJuego{
+    height: 480px;
+    width: 480px;
+    border: 2px solid rgb(140 140 140);
+    position: relative;
+    left: 240px;
+    top: 200px;
+}

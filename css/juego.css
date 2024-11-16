@@ -1,8 +1,18 @@
 #TablaJuego{
     height: 480px;
     width: 480px;
-    border: 2px solid rgb(140 140 140);
     position: relative;
-    left: 240px;
-    top: 200px;
+    left: 37.7%;
+    top: 120px;
+    border: 2px solid rgb(140 140 140); 
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+tr {
+    border: 3px solid black;
+}
+
+td {
+    border: 3px solid black;
 }

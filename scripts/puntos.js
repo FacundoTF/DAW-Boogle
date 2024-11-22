@@ -1,3 +1,4 @@
+"use strict"
 function sumarPuntos() {
     // if(localStorage.getItem("Puntaje") === 0){
 

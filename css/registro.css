@@ -3,12 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-
->>>>>>> 78bd1ff (El código css se generalizo mediante 'styles.css', también se comenzó a hacer el código css de la página 'juego.html'. Además se hicieron las funciones para sumar, restar y resetear el puntaje.)
 html{
     background-color: #FFCAAF;
 }
@@ -60,15 +54,12 @@ footer>*{
     justify-items: center;
     font-size: 60px
 }
->>>>>>> b52e7d6 (Realizacion CSS en registro)
-
 #Registro{
     position: relative;
     display: flex;
     margin: 15px;
     flex-direction: column;
 }
-
 #Registro>input{
     margin: 15px;
     align-self: center;
@@ -76,20 +67,17 @@ footer>*{
     width: 90%;
     font-size: xx-large;
 }
-
 #Registro>label{
     position: relative;
     left: 50px;
     font-size: xx-large;
 }
-
 #Registro>button{
     left: 50px;
     width: 80%;
     height: 90px;
     align-self: center;
 }
-
 #AlertaModal{
     display: none;
     position: absolute;
@@ -102,7 +90,6 @@ footer>*{
     background-color: #5e5b5a9a;
     z-index: 1;
 }
-
 #AlertaModal>div{
     display: flex;
     flex-direction: column;
@@ -113,26 +100,22 @@ footer>*{
     background-color: #003550;
     color: #ffffff;
 }
-
 #AlertaModal>div>h2{
     width: max-content;
     align-self: center;
     margin: 30px 0px 15px 0px;
 }
-
 #AlertaModal>div>p{
     width: max-content;
     align-self: center;
     margin: 15px;
 }
-
 #AlertaModal>div>button{
     align-self: center;
     width: 90%;
     height: 70%;
     margin: 0px 0px 10px 0px;
 }
-
 /* Cambios esteticos Button */
 #Registro>button, #AlertaModal>div>button {
     left: 50px;
@@ -149,12 +132,10 @@ footer>*{
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
 }
-
 #Registro>button:hover, #AlertaModal>div>button:hover {
     transform: scale(1.05);
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
 }
-
 #Registro>button:active, #AlertaModal>div>button:active {
     transform: scale(0.95);
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
@@ -176,13 +157,11 @@ footer>*{
     padding: 0 15px;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
-
 #Registro>input:focus {
     outline: none;
     border-color: #0072FF;
     box-shadow: 0px 8px 15px rgba(0, 114, 255, 0.3);
 }
-
 #Registro>input::placeholder {
     color: #999999;
     font-weight: normal;
@@ -204,7 +183,6 @@ footer>*{
     letter-spacing: 1px;
     transition: transform 0.3s, letter-spacing 0.3s;
 }
-
 #Registro>label:hover {
     transform: scale(1.1);
     letter-spacing: 2px;
@@ -218,7 +196,6 @@ footer>*{
     align-items: center;
     height: 150px; /* Ajustar la altura del contenedor */
 }
-
 #Logo {
     margin: 0;
     font-size: 3rem;
@@ -232,7 +209,6 @@ footer>*{
     text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, text-shadow 0.3s;
 }
-
 #LogoConteiner:hover #Logo {
     transform: scale(1.1);
     text-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
@@ -251,20 +227,17 @@ footer {
     text-align: center; /* Alinea todo el texto al centro */
     box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.2); /* Añadir sombra sutil */
 }
-
 footer ul {
     display: flex; /* Organiza los elementos de la lista en una fila */
     flex-direction: row; /* Los elementos están en fila */
     padding: 0;
     margin: 5px 0;
 }
-
 footer ul li {
     list-style: none; /* Elimina puntos de la lista */
     font-size: 1rem; /* Ajuste de tamaño de fuente */
     margin: 0 10px; /* Separación uniforme entre elementos */
 }
-
 #Año {
     font-size: 1.5rem; /* Tamaño del texto del año */
     margin: 10px 0; /* Espaciado para que no quede pegado */
@@ -282,7 +255,6 @@ footer ul li {
     background-color: rgba(94, 91, 90, 0.6);
     z-index: 1;
 }
-
 #AlertaModal > div {
     display: flex;
     flex-direction: column;
@@ -299,20 +271,17 @@ footer ul li {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease-in-out;
 }
-
 #AlertaModal > div > h2 {
     width: max-content;
     align-self: center;
     margin: 20px 0 15px;
 }
-
 #AlertaModal > div > p {
     width: max-content;
     align-self: center;
     margin: 10px;
     text-align: center; /* Asegura que el texto esté centrado */
 }
-
 #AlertaModal > div > button {
     width: 80%;
     height: 60px;
@@ -327,17 +296,14 @@ footer ul li {
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
 }
-
 #AlertaModal > div > button:hover {
     transform: scale(1.05);
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
 }
-
 #AlertaModal > div > button:active {
     transform: scale(0.95);
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
 }
-
 /* Media Queries para pantallas pequeñas */
 @media screen and (max-width: 768px) {
     #AlertaModal > div {

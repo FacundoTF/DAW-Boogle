@@ -1,3 +1,4 @@
+"use strict"
 async function verificarPalabra(palabra) {
     resultado = false
     try{
@@ -38,16 +39,14 @@ function iniciarTabla() {
 
     var celdas = document.getElementsByClassName("CeldaPalabra")
 
-    for (i = 0; i < celdas.length; i++) {
+    for (var i = 0; i < celdas.length; i++) {
         var celda = celdas.item(i)
 
         var palabraNumero = Math.floor(Math.random() * abecedario.length) + 1
 
         var letraElegida = abecedario.slice(palabraNumero - 1, palabraNumero)
 
-        celdas.item(i).innerHTML = letraElegida
+        celda.innerHTML = letraElegida
     }
-
-    
 }
 iniciarTabla()

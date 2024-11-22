@@ -1,11 +1,9 @@
-
-
 async function verificarPalabra(palabra) {
     resultado = false
     try{
-        var conexion = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + palabra)
+        var respuesta = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + palabra)
 
-        if(conexion.status == "404"){
+        if(respuesta.status == "404"){
             throw new Error("No se encontro la palabra");
         }
         else{
@@ -18,7 +16,6 @@ async function verificarPalabra(palabra) {
         return resultado
     }
 }
-
 async function formarPalabra(palabra) {
     //El parámetro de la función "verificarPalabra" debería estar la palabra que formó el jugador
     if(typeof(palabra) != "string"){
@@ -36,6 +33,21 @@ async function formarPalabra(palabra) {
         restarPuntos()
     }
 }
+function iniciarTabla() {
+    var abecedario = "abcdefghijklmnopqrstuvxyz"
 
+    var celdas = document.getElementsByClassName("CeldaPalabra")
 
-formarPalabra("He")
+    for (i = 0; i < celdas.length; i++) {
+        var celda = celdas.item(i)
+
+        var palabraNumero = Math.floor(Math.random() * abecedario.length) + 1
+
+        var letraElegida = abecedario.slice(palabraNumero - 1, palabraNumero)
+
+        celdas.item(i).innerHTML = letraElegida
+    }
+
+    
+}
+iniciarTabla()

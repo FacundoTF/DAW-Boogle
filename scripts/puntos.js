@@ -8,7 +8,6 @@ function sumarPuntos() {
 
     localStorage.getItem("Puntaje") = puntajeSumar
 }
-
 function restarPuntos(){
     var puntajeRestar = localStorage.getItem("Puntaje")
 
@@ -20,7 +19,6 @@ function restarPuntos(){
 
     localStorage.getItem("Puntaje") = puntajeRestar
 }
-
 function resetarPuntos(){
     localStorage.getItem("Puntaje") = 0
 }

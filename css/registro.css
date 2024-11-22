@@ -5,8 +5,22 @@
 }
 html{
     background-color: #FFCAAF;
+    height: 100%;
+    width: 100%;
+}
+body {
+    background-color: #FFCAAF;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Esto asegura que el body siempre ocupe toda la altura de la ventana */
+}
+header, footer {
+    width: 100%;
 }
 
+main {
+    flex-grow: 1; /* Esto permite que el contenido principal ocupe todo el espacio disponible entre header y footer */
+}
 header{
     height: 110px;
     margin: 0px 0px 32px 0px;
@@ -20,7 +34,7 @@ header>h1{
     top: 35px;
     margin: 0px;
 }
-footer{
+/* footer{
     position: absolute;
     top: 100%;
     width: 100%;
@@ -31,14 +45,8 @@ footer>*{
     position: relative;
     left: 50px;
     list-style: none;
-}
-#Año{
-    margin: 0;
-    position: absolute;
-    bottom: 20%;
-    left: 80%;
-    font-size: 50px;
-}
+} */
+
 
 #LogoConteiner{
     position: relative;
@@ -116,6 +124,7 @@ footer>*{
     height: 70%;
     margin: 0px 0px 10px 0px;
 }
+
 /* Cambios esteticos Button */
 #Registro>button, #AlertaModal>div>button {
     left: 50px;
@@ -322,4 +331,3 @@ footer ul li {
         width: 100%; /* Hacer que el botón ocupe todo el ancho */
         height: 50px; /* Reducir altura del botón */
     }
-}

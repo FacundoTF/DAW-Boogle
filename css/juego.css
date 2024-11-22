@@ -1,0 +1,24 @@
+.FilaPalabra {
+    border: 3px solid #000000
+}
+.CeldaPalabra{
+    text-transform: uppercase;
+    text-align: center;
+    user-select: none;
+    font: bold 52px sans-serif;
+    border: 3px solid #000000;
+}
+#ContenedorJuego{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+#TablaJuego{
+    position: relative;
+    height: 480px;
+    width: 480px;
+    top: 120px;
+    background-color: #FFFFFF;
+    border-collapse: collapse;
+    table-layout: fixed;
+}

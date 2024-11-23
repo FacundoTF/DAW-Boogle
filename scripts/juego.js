@@ -1,6 +1,6 @@
 "use strict"
 async function verificarPalabra(palabra) {
-    resultado = false
+    var resultado = false
     try{
         var respuesta = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + palabra)
 

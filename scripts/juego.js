@@ -29,6 +29,8 @@ async function formarPalabra(palabra) {
     if(palabraValida === true){
         //La palabrá se encontró y deben sumarse puntos
         sumarPuntos()
+        resetarEstiloCelda()
+        localStorage.setItem("Ultima celda", "")
     }else{
         //La palabrá no se encontró
         restarPuntos()
@@ -36,16 +38,14 @@ async function formarPalabra(palabra) {
 }
 function iniciarTabla() {
     var abecedario = "abcdefghijklmnopqrstuvxyz"
-
     var celdas = document.getElementsByClassName("CeldaPalabra")
-
+    var celda
+    var palabraNumero
+    var letraElegida
     for (var i = 0; i < celdas.length; i++) {
         var celda = celdas.item(i)
-
-        var palabraNumero = Math.floor(Math.random() * abecedario.length) + 1
-
-        var letraElegida = abecedario.slice(palabraNumero - 1, palabraNumero)
-
+        palabraNumero = Math.floor(Math.random() * abecedario.length) + 1
+        letraElegida = abecedario.slice(palabraNumero - 1, palabraNumero)
         celda.innerHTML = letraElegida
     }
 }

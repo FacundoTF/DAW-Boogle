@@ -7,8 +7,7 @@ function validarCeldasContiguas(celda, celdaAnterior){
     var columnaActual = celda.cellIndex + 1
     var filaAnterior = parseInt(celdaAnterior.substring(5,6))
     var columnaAnterior = parseInt(celdaAnterior.substring(11,12))
-
-    if(Math.abs(filaActual - filaAnterior) === 1 || Math.abs(columnaActual - columnaAnterior) === 1){
+    if(Math.abs(filaActual - filaAnterior) <= 1 && Math.abs(columnaActual - columnaAnterior) <= 1){
         return true
     }else{
         return false
@@ -38,6 +37,10 @@ async function comportamientoCeldas(){
         })
     }
 }
+// function deseleccionarCelda(celda){
+//     var filaActual = celda.parentElement.rowIndex + 1
+//     var columnaActual = celda.cellIndex + 1
+// }
 function resetarEstiloCelda(){
     for (var i = 0; i < celdas.length; i++) {
         celdas[i].style.background = "#FFFFFF"

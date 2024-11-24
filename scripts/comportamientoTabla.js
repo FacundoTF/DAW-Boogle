@@ -5,24 +5,25 @@ localStorage.setItem("Ultima celda", "")
 
 async function comportamientoCeldas(){
     var letras
-    var nuevasLetras
-    var ultimaCeldaSeleccionada
+    var letrasRestantes
+    var celdasSeleccionadas
     var celdaValida
     var mismaCelda
     for (var i = 0; i < celdas.length; i++) {
         celdas[i].addEventListener("click", (event)=>{
             letras = localStorage.getItem("Palabra")
-            ultimaCeldaSeleccionada = localStorage.getItem("Ultima celda")
+            celdasSeleccionadas = localStorage.getItem("Ultima celda")
             debugger
             mismaCelda = deseleccionarCelda(event.target)
             if(mismaCelda){
                 event.currentTarget.style.background="#FFFFFF"
-                nuevasLetras = letras.slice(0,-1)
-                localStorage.setItem("Palabra", nuevasLetras)                
+                letrasRestantes = letras.slice(0,-1)
+                celdasRestantes = celdasSeleccionadas.slice(0,-14)
+                localStorage.setItem("Palabra", letrasRestantes)                
                 return
             }
             if(letras.length >= 1){
-                celdaValida = validarCeldasContiguas(event.target,ultimaCeldaSeleccionada)
+                celdaValida = validarCeldasContiguas(event.target,celdasSeleccionadas)
                 if(celdaValida === false){
                     return
                 }
@@ -30,18 +31,22 @@ async function comportamientoCeldas(){
             }else{
                 localStorage.setItem("Palabra", event.currentTarget.innerHTML)
             }
-            localStorage.setItem("Ultima celda", `fila:${event.target.parentElement.rowIndex+1}/col:${event.target.cellIndex+1}`)
+            localStorage.setItem("Ultima celda", `${celdasSeleccionadas}/fila:${event.target.parentElement.rowIndex+1}-col:${event.target.cellIndex+1}`)
             event.currentTarget.style.background="#FF0000"
             formarPalabra(localStorage.getItem("Palabra"))
         })
     }
 }
 function deseleccionarCelda(celda){
+    debugger
     var filaActual = celda.parentElement.rowIndex + 1
     var columnaActual = celda.cellIndex + 1
-    var ultimaCeldaSeleccionada = localStorage.getItem("Ultima celda")
-    var filaAnterior = parseInt(ultimaCeldaSeleccionada.substring(5,6))
-    var columnaAnterior = parseInt(ultimaCeldaSeleccionada.substring(11,12))
+    var celdasSeleccionadas = localStorage.getItem("Ultima celda")
+    var celdasSinActual = celdasSeleccionadas.slice(0,-13)
+    var filaAnterior = parseInt(celdasSeleccionadas.substring(5,6))
+    var columnaAnterior = parseInt(celdasSeleccionadas.substring(11,12))
+    //Hacer un slice de todo en 'Ultima celda'
+    //Hacer un substring sin la celda actual. En teoria se puede hacer para atras.
     if(filaActual === filaAnterior && columnaActual === columnaAnterior){
         return true
     }else{
@@ -49,10 +54,11 @@ function deseleccionarCelda(celda){
     }
 }
 function validarCeldasContiguas(celda, celdaAnterior){
+    var celdaA = celdaAnterior.substring(celdaAnterior.length - 13)
+    var filaAnterior = parseInt(celdaA.substring(6,7))
+    var columnaAnterior = parseInt(celdaA.substring(12,13))
     var filaActual = celda.parentElement.rowIndex + 1
-    var columnaActual = celda.cellIndex + 1
-    var filaAnterior = parseInt(celdaAnterior.substring(5,6))
-    var columnaAnterior = parseInt(celdaAnterior.substring(11,12))
+    var columnaActual = celda.cellIndex + 1    
     if(Math.abs(filaActual - filaAnterior) <= 1 && Math.abs(columnaActual - columnaAnterior) <= 1){
         return true
     }else{

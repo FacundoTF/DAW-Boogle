@@ -39,7 +39,6 @@ async function comportamientoCeldas(){
     }
 }
 function deseleccionarCelda(celda){
-    
     var filaActual = celda.parentElement.rowIndex + 1
     var columnaActual = celda.cellIndex + 1
     var celdasAlmacenadas = localStorage.getItem("Ultima celda")
@@ -53,7 +52,6 @@ function deseleccionarCelda(celda){
     }
 }
 function validarCeldasContiguas(celda, celdaAnterior){
-    
     var celdaA = celdaAnterior.substring(celdaAnterior.length - 13)
     var filaAnterior = parseInt(celdaA.substring(6,7))
     var columnaAnterior = parseInt(celdaA.substring(12,13))
@@ -62,14 +60,16 @@ function validarCeldasContiguas(celda, celdaAnterior){
     if(Math.abs(filaActual - filaAnterior) <= 1 && Math.abs(columnaActual - columnaAnterior) <= 1 && celda.style.background !== "rgb(255, 0, 0)"){
         return true
     }else{
+        resetarEstiloCelda()
+        localStorage.setItem("Ultima celda", "")
         return false
     }
 }
 function resetarEstiloCelda(){
     for (var i = 0; i < celdas.length; i++) {
         celdas[i].style.background = "#FFFFFF"
-        localStorage.setItem("Palabra", "")
     }
+    localStorage.setItem("Palabra", "")
 }
 comportamientoCeldas()
 

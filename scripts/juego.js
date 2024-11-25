@@ -18,6 +18,10 @@ async function verificarPalabra(palabra) {
     }
 }
 async function formarPalabra(palabra) {
+    var palabrasFormadas
+    var palabraFormada
+    var tablaPalabras
+    var elementoP
     //El parámetro de la función "verificarPalabra" debería estar la palabra que formó el jugador
     if(typeof(palabra) != "string"){
         return
@@ -27,14 +31,28 @@ async function formarPalabra(palabra) {
     }
     var palabraValida = await verificarPalabra(palabra)
     if(palabraValida === true){
+        debugger
+        palabrasFormadas = localStorage.getItem("Palabras formadas")
+        palabraFormada = localStorage.getItem("Palabra")
+        tablaPalabras = document.getElementById("ListaPalabras")
+        elementoP = document.createElement("p")
+        elementoP.append(palabraFormada)
+        elementoP.className = "PalabraFormada"
         //La palabrá se encontró y deben sumarse puntos
         sumarPuntos()
         resetarEstiloCelda()
+        palabraFormada = palabraFormada + "-"
+        palabrasFormadas = palabrasFormadas + palabraFormada
+        tablaPalabras.append(elementoP)
         localStorage.setItem("Ultima celda", "")
+        localStorage.setItem("Palabras formadas", palabrasFormadas)
     }else{
         //La palabrá no se encontró
         restarPuntos()
     }
+}
+function actualizarPalabrasHechas(){
+
 }
 function iniciarTabla() {
     var abecedario = "abcdefghijklmnopqrstuvxyz"

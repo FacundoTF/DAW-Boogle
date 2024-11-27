@@ -2,7 +2,6 @@
 var celdas = document.getElementsByClassName("CeldaPalabra")
 localStorage.setItem("Palabra", "")
 localStorage.setItem("Ultima celda", "")
-
 async function comportamientoCeldas(){
     var letras
     var letrasRestantes

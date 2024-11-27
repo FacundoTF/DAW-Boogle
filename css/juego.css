@@ -15,8 +15,9 @@
 }
 #ContenedorPalabras{
     display: flex;
+    position: relative;
     justify-content: center;
-    width: 650px;
+    top: 150px;
 }
 #TablaJuego{
     position: relative;
@@ -29,7 +30,7 @@
 }
 #ListaPalabras{
     position: relative;
-    left: 1100px;
+    left: 500px;
     bottom: 360px;
     align-content: center;
     width: 300px;
@@ -37,12 +38,14 @@
     border: 20px solid #000000;
     background-color: #00c7bd;
 }
-#ContenedorPalabras>p{
+#ListaPalabras>p{
     text-align: center;
 }
 #ListaPalabras>.PalabraFormada{
     margin: 0px;
     padding: 20px 0px 20px 20px;
     text-align: left;
+    text-transform: uppercase;
+    font: bold 18px sans-serif;
     background-color: #8ac500;
 }

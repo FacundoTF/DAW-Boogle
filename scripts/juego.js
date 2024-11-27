@@ -1,4 +1,43 @@
 "use strict"
+localStorage.setItem("Palabras formadas", "")
+//Función principal para formar la palabra
+async function formarPalabra(palabra) {
+    var palabrasFormadas
+    var palabraFormada
+    var tablaPalabras
+    var elementoP
+    var palabraValida
+    var palabraRepetida
+    if(typeof(palabra) != "string"){
+        return
+    }
+    if(palabra.length < 3){
+        return
+    }
+    palabraValida = await verificarPalabra(palabra)
+    if(palabraValida === true){
+        palabrasFormadas = localStorage.getItem("Palabras formadas")
+        palabraFormada = localStorage.getItem("Palabra")
+        tablaPalabras = document.getElementById("ListaPalabras")
+        palabraRepetida = buscarPalabraRepetida(palabraFormada)
+        if(palabraRepetida >= 0){
+            return
+        }
+        elementoP = document.createElement("p")
+        elementoP.append(palabraFormada)
+        elementoP.className = "PalabraFormada"
+        sumarPuntos()
+        resetarEstiloCelda()
+        palabraFormada = palabraFormada + "-"
+        palabrasFormadas = palabrasFormadas + palabraFormada
+        tablaPalabras.append(elementoP)
+        localStorage.setItem("Ultima celda", "")
+        localStorage.setItem("Palabras formadas", palabrasFormadas)
+    }else{
+        restarPuntos()
+    }
+}
+//Verifica si la palabra formada existe en la API o no
 async function verificarPalabra(palabra) {
     var resultado = false
     try{
@@ -17,43 +56,15 @@ async function verificarPalabra(palabra) {
         return resultado
     }
 }
-async function formarPalabra(palabra) {
+//Verifica si la palabra formada es repetida o no
+function buscarPalabraRepetida(palabraFormada){
     var palabrasFormadas
-    var palabraFormada
-    var tablaPalabras
-    var elementoP
-    //El parámetro de la función "verificarPalabra" debería estar la palabra que formó el jugador
-    if(typeof(palabra) != "string"){
-        return
-    }
-    if(palabra.length < 3){
-        return
-    }
-    var palabraValida = await verificarPalabra(palabra)
-    if(palabraValida === true){
-        debugger
-        palabrasFormadas = localStorage.getItem("Palabras formadas")
-        palabraFormada = localStorage.getItem("Palabra")
-        tablaPalabras = document.getElementById("ListaPalabras")
-        elementoP = document.createElement("p")
-        elementoP.append(palabraFormada)
-        elementoP.className = "PalabraFormada"
-        //La palabrá se encontró y deben sumarse puntos
-        sumarPuntos()
-        resetarEstiloCelda()
-        palabraFormada = palabraFormada + "-"
-        palabrasFormadas = palabrasFormadas + palabraFormada
-        tablaPalabras.append(elementoP)
-        localStorage.setItem("Ultima celda", "")
-        localStorage.setItem("Palabras formadas", palabrasFormadas)
-    }else{
-        //La palabrá no se encontró
-        restarPuntos()
-    }
+    var resultado
+    palabrasFormadas = localStorage.getItem("Palabras formadas")
+    resultado = palabrasFormadas.search(palabraFormada)
+    return resultado
 }
-function actualizarPalabrasHechas(){
-
-}
+//Coloca las letras en las celdas de la tabla
 function iniciarTabla() {
     var abecedario = "abcdefghijklmnopqrstuvxyz"
     var celdas = document.getElementsByClassName("CeldaPalabra")

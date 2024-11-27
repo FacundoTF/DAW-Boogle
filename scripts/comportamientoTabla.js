@@ -2,6 +2,7 @@
 var celdas = document.getElementsByClassName("CeldaPalabra")
 localStorage.setItem("Palabra", "")
 localStorage.setItem("Ultima celda", "")
+//Funcion principal que controla el comportamiento de las celdas
 async function comportamientoCeldas(){
     var letras
     var letrasRestantes
@@ -19,7 +20,7 @@ async function comportamientoCeldas(){
                 letrasRestantes = letras.slice(0,-1)
                 celdasRestantes = celdasSeleccionadas.slice(0,-13)
                 localStorage.setItem("Palabra", letrasRestantes)
-                localStorage.setItem("Ultima celda", celdasRestantes)            
+                localStorage.setItem("Ultima celda", celdasRestantes)
                 return
             }
             if(letras.length >= 1){
@@ -28,8 +29,10 @@ async function comportamientoCeldas(){
                     return
                 }
                 localStorage.setItem("Palabra", letras + event.currentTarget.innerHTML)
+                visualizarLetra(event.currentTarget.innerText)
             }else{
                 localStorage.setItem("Palabra", event.currentTarget.innerHTML)
+                visualizarLetra(event.currentTarget.innerText)
             }
             localStorage.setItem("Ultima celda", `${celdasSeleccionadas}/fila:${event.target.parentElement.rowIndex+1}-col:${event.target.cellIndex+1}`)
             event.currentTarget.style.background="#FF0000"
@@ -50,6 +53,12 @@ function deseleccionarCelda(celda){
         return false
     }
 }
+function resetarEstiloCelda(){
+    for (var i = 0; i < celdas.length; i++) {
+        celdas[i].style.background = "#FFFFFF"
+    }
+    localStorage.setItem("Palabra", "")
+}
 function validarCeldasContiguas(celda, celdaAnterior){
     var celdaA = celdaAnterior.substring(celdaAnterior.length - 13)
     var filaAnterior = parseInt(celdaA.substring(6,7))
@@ -64,11 +73,25 @@ function validarCeldasContiguas(celda, celdaAnterior){
         return false
     }
 }
-function resetarEstiloCelda(){
-    for (var i = 0; i < celdas.length; i++) {
-        celdas[i].style.background = "#FFFFFF"
+//Permite mostrar y agregar las letras que se van seleccionando arriba de las celdas
+function visualizarLetra(letra){
+    debugger
+    var palabraActual
+    var contenedorPalabra
+    var letrasActuales
+    palabraActual = localStorage.getItem("Palabra")
+    contenedorPalabra = document.getElementById("PalabraFormandose")
+    letrasActuales = document.querySelector("#PalabraFormandose>p")
+    contenedorPalabra.style.visibility = "visible"
+    if(palabraActual.length === 1){
+        letrasActuales.innerHTML = letra
+    }else{
+        letrasActuales.innerHTML = letrasActuales.innerHTML + letra
     }
-    localStorage.setItem("Palabra", "")
+}
+//Permite remover las letras que se van seleccionando arriba de las celdas
+function ocultarLetra(letra){
+
 }
 comportamientoCeldas()
 

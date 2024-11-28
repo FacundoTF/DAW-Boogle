@@ -11,6 +11,7 @@
 #PalabraFormandose{
     display: flex;
     position: relative;
+    height: 114px;
     top: 90px;
     justify-content: center;
     font: bold 28px sans-serif;

@@ -10,22 +10,27 @@ async function comportamientoCeldas(){
     var celdaValida
     var mismaCelda
     var celdasRestantes
+    var removerTodasPalabras
     for (var i = 0; i < celdas.length; i++) {
         celdas[i].addEventListener("click", (event)=>{
             letras = localStorage.getItem("Palabra")
             celdasSeleccionadas = localStorage.getItem("Ultima celda")
             mismaCelda = deseleccionarCelda(event.target)
             if(mismaCelda){
-                event.currentTarget.style.background="#FFFFFF"
+                event.currentTarget.style.background = "#FFFFFF"
+                removerTodasPalabras = false
                 letrasRestantes = letras.slice(0,-1)
                 celdasRestantes = celdasSeleccionadas.slice(0,-13)
                 localStorage.setItem("Palabra", letrasRestantes)
                 localStorage.setItem("Ultima celda", celdasRestantes)
+                removerLetra(removerTodasPalabras)
                 return
             }
             if(letras.length >= 1){
                 celdaValida = validarCeldasContiguas(event.target,celdasSeleccionadas)
                 if(celdaValida === false){
+                    removerTodasPalabras = true
+                    removerLetra(removerTodasPalabras)
                     return
                 }
                 localStorage.setItem("Palabra", letras + event.currentTarget.innerHTML)
@@ -35,7 +40,7 @@ async function comportamientoCeldas(){
                 visualizarLetra(event.currentTarget.innerText)
             }
             localStorage.setItem("Ultima celda", `${celdasSeleccionadas}/fila:${event.target.parentElement.rowIndex+1}-col:${event.target.cellIndex+1}`)
-            event.currentTarget.style.background="#FF0000"
+            event.currentTarget.style.background = "#FF0000"
             formarPalabra(localStorage.getItem("Palabra"))
         })
     }
@@ -89,9 +94,23 @@ function visualizarLetra(letra){
         letrasActuales.innerHTML = letrasActuales.innerHTML + letra
     }
 }
-//Permite remover las letras que se van seleccionando arriba de las celdas
-function ocultarLetra(letra){
-
+//Permite remover la última o todas las letras arriba de la tabla con las celdas
+function removerLetra(removerTodo){
+    debugger
+    var contenedorPalabra
+    var letrasActuales
+    var letrasNuevas
+    contenedorPalabra = document.getElementById("PalabraFormandose")
+    letrasActuales = document.querySelector("#PalabraFormandose>p")
+    letrasNuevas = letrasActuales.innerHTML.slice(0,-1)
+    if(letrasNuevas.length === 0){
+        contenedorPalabra.style.visibility = "hidden"
+    }else if(removerTodo === true){
+        letrasActuales.innerHTML = ""
+        contenedorPalabra.style.visibility = "hidden"
+    }else{
+        letrasActuales.innerHTML = letrasNuevas
+    }
 }
 comportamientoCeldas()
 

@@ -8,6 +8,7 @@ async function formarPalabra(palabra) {
     var elementoP
     var palabraValida
     var palabraRepetida
+    var removerTodasPalabras
     if(typeof(palabra) != "string"){
         return
     }
@@ -16,6 +17,7 @@ async function formarPalabra(palabra) {
     }
     palabraValida = await verificarPalabra(palabra)
     if(palabraValida === true){
+        removerTodasPalabras = true
         palabrasFormadas = localStorage.getItem("Palabras formadas")
         palabraFormada = localStorage.getItem("Palabra")
         tablaPalabras = document.getElementById("ListaPalabras")
@@ -28,6 +30,7 @@ async function formarPalabra(palabra) {
         elementoP.className = "PalabraFormada"
         sumarPuntos()
         resetarEstiloCelda()
+        removerLetra(removerTodasPalabras)
         palabraFormada = palabraFormada + "-"
         palabrasFormadas = palabrasFormadas + palabraFormada
         tablaPalabras.append(elementoP)

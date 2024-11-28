@@ -8,6 +8,15 @@
     font: bold 52px sans-serif;
     border: 3px solid #000000;
 }
+#PalabraFormandose{
+    display: flex;
+    position: relative;
+    height: 114px;
+    top: 90px;
+    justify-content: center;
+    font: bold 28px sans-serif;
+    visibility: hidden;
+}
 #ContenedorJuego{
     display: flex;
     justify-content: center;
@@ -38,6 +47,10 @@
     border: 20px solid #000000;
     background-color: #00c7bd;
 }
+#PalabraFormandose>p{
+    background-color: #00c7bd;
+    border: 10px solid #8ac500;
+}    
 #ListaPalabras>p{
     text-align: center;
 }

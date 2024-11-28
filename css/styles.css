@@ -1,41 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 html{
     background-color: #FFCAAF;
+    height: 100%;
+    width: 100%;
+}
+body {
+    background-color: #FFCAAF;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Esto asegura que el body siempre ocupe toda la altura de la ventana */
+    
+}
+header, footer {
+    width: 100%;
 }
 
-header{
+main {
+    flex-grow: 1; /* Esto permite que el contenido principal ocupe todo el espacio disponible entre header y footer */
+}
+header {
+    display: flex; /* Activar Flexbox */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
     height: 110px;
     margin: 0px 0px 32px 0px;
-    text-align: left;
     background-color: #003550;
     color: #ffffff;
+    text-align: center; /* Centrar texto dentro del header */
 }
-header>h1{
-    position: relative;
-    left: 50px;
-    top: 35px;
-    margin: 0px;
+header > h1 {
+    position: static; /* Eliminar el desplazamiento relativo */
+    margin: 0; /* Evitar márgenes innecesarios */
+    font-size: 2rem; /* Ajusta el tamaño de la fuente según sea necesario */
 }
-footer{
-    position: absolute;
+footer {
     top: 100%;
+    display: flex;
+    flex-direction: column; /* Mantener los elementos en una columna */
+    align-items: center; /* Centra todo en el eje horizontal */
+    justify-content: center; /* Alinea el contenido en el centro verticalmente */
+    padding: 10px 20px; /* Espaciado adecuado para evitar pegajoso */
     width: 100%;
     background-color: #003550;
     color: #ffffff;
+    text-align: center; /* Alinea todo el texto al centro */
+    box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.2); /* Añadir sombra sutil */
 }
-footer>*{
-    position: relative;
-    left: 50px;
-    list-style: none;
+footer ul {
+    display: flex; /* Organiza los elementos de la lista en una fila */
+    flex-direction: row; /* Los elementos están en fila */
+    padding: 0;
+    margin: 5px 0;
 }
-
-#Año{
-    margin: 0;
-    position: absolute;
-    bottom: 20%;
-    left: 80%;
-    font-size: 50px;
+footer ul li {
+    list-style: none; /* Elimina puntos de la lista */
+    font-size: 1rem; /* Ajuste de tamaño de fuente */
+    margin: 0 10px; /* Separación uniforme entre elementos */
 }
-
+/* ----- Registro ----- */
 #LogoConteiner{
     position: relative;
     bottom: 15px;
@@ -49,4 +75,277 @@ footer>*{
     height: 60px;
     justify-items: center;
     font-size: 60px
+}
+#Registro{
+    position: relative;
+    display: flex;
+    margin: 15px;
+    flex-direction: column;
+}
+#Registro>input{
+    margin: 15px;
+    align-self: center;
+    height: 60px;
+    width: 90%;
+    font-size: xx-large;
+}
+#Registro>label{
+    position: relative;
+    left: 50px;
+    font-size: xx-large;
+}
+#Registro>button{
+    left: 50px;
+    width: 80%;
+    height: 90px;
+    align-self: center;
+}
+#AlertaModal{
+    display: none;
+    position: absolute;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    background-color: #5e5b5a9a;
+    z-index: 1;
+}
+#AlertaModal>div{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    height: 240px;
+    width: 620px;
+    font-size: 30px;
+    background-color: #003550;
+    color: #ffffff;
+}
+#AlertaModal>div>h2{
+    width: max-content;
+    align-self: center;
+    margin: 30px 0px 15px 0px;
+}
+#AlertaModal>div>p{
+    width: max-content;
+    align-self: center;
+    margin: 15px;
+}
+#AlertaModal>div>button{
+    align-self: center;
+    width: 90%;
+    height: 70%;
+    margin: 0px 0px 10px 0px;
+}
+/* Cambios esteticos Button */
+#Registro>button, #AlertaModal>div>button {
+    left: 50px;
+    width: 80%;
+    height: 90px;
+    align-self: center;
+    font-size: large;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(45deg,#0072FF, #00C6FF, #0072FF);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+#Registro>button:hover, #AlertaModal>div>button:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+}
+#Registro>button:active, #AlertaModal>div>button:active {
+    transform: scale(0.95);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+/* Cambios esteticos "EntradaNombre" */
+#Registro>input {
+    margin: 15px auto;
+    align-self: center;
+    height: 60px;
+    width: 90%;
+    max-width: 500px;
+    font-size: large;
+    font-weight: bold;
+    color: #003550;
+    background: #ffffff;
+    border: 2px solid #00C6FF;
+    border-radius: 8px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 0 15px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+#Registro>input:focus {
+    outline: none;
+    border-color: #0072FF;
+    box-shadow: 0px 8px 15px rgba(0, 114, 255, 0.3);
+}
+#Registro>input::placeholder {
+    color: #999999;
+    font-weight: normal;
+}
+/* Nombre */
+#Registro>label {
+    position: relative;
+    left: 0;
+    margin: 10px auto;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #003550;
+    background: linear-gradient(45deg, #00C6FF, #0072FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.3s, letter-spacing 0.3s;
+}
+#Registro>label:hover {
+    transform: scale(1.1);
+    letter-spacing: 2px;
+}
+/* B o o g l e */
+#LogoConteiner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 150px; /* Ajustar la altura del contenedor */
+}
+#Logo {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    background: linear-gradient(45deg, #FFFFFF, #808080);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 3px;
+    text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, text-shadow 0.3s;
+}
+#LogoConteiner:hover #Logo {
+    transform: scale(1.1);
+    text-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+}
+#Año {
+    font-size: 1.5rem; /* Tamaño del texto del año */
+    margin: 10px 0; /* Espaciado para que no quede pegado */
+}
+/*AlertaModal*/
+#AlertaModal {
+    display: none;
+    position: absolute;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; /* Alineación vertical y horizontal */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: rgba(94, 91, 90, 0.6);
+    z-index: 1;
+}
+#AlertaModal > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60%; /* Ajusta el tamaño vertical */
+    width: 90%; /* Hace que el modal ocupe el 90% del ancho */
+    max-width: 620px; /* Limita el ancho máximo */
+    font-size: 1.5rem;
+    background-color: #003550;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+#AlertaModal > div > h2 {
+    width: max-content;
+    align-self: center;
+    margin: 20px 0 15px;
+}
+#AlertaModal > div > p {
+    width: max-content;
+    align-self: center;
+    margin: 10px;
+    text-align: center; /* Asegura que el texto esté centrado */
+}
+#AlertaModal > div > button {
+    width: 80%;
+    height: 60px;
+    margin: 15px 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(45deg, #0072FF, #00C6FF, #0072FF);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+#AlertaModal > div > button:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+}
+#AlertaModal > div > button:active {
+    transform: scale(0.95);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+/*----- JUEGO.HTML ----- */
+.FilaPalabra {
+    border: 3px solid #000000
+}
+.CeldaPalabra{
+    text-transform: uppercase;
+    text-align: center;
+    user-select: none;
+    font: bold 52px sans-serif;
+    border: 3px solid #000000;
+}
+#ContenedorJuego {
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    flex-grow: 1; /* Hace que el contenedor del juego ocupe el espacio disponible */
+    width: 100%; /* Ocupar todo el ancho de la ventana */
+}
+
+#TablaJuego{
+    position: relative;
+    height: 480px;
+    width: 480px;
+    top: 120px;
+    background-color: #FFFFFF;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+/* ----- Responsive ----- */
+/* Media Queries para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    #AlertaModal > div {
+        width: 90%;
+        height: auto; /* Ajusta la altura para que no se corte el contenido */
+        max-width: 500px; /* Reducir el ancho máximo en pantallas pequeñas */
+        padding: 15px; /* Reducir el relleno */
+    }
+
+    #AlertaModal > div > h2, 
+    #AlertaModal > div > p {
+        font-size: 1.2rem; /* Reducir tamaño de fuente */
+    }
+
+    #AlertaModal > div > button {
+        width: 100%; /* Hacer que el botón ocupe todo el ancho */
+        height: 50px; /* Reducir altura del botón */
+    }
 }

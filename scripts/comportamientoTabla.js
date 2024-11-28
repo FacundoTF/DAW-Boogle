@@ -7,6 +7,6 @@ function resetarEstiloCelda(){
 }
 for (var i = 0; i < celdas.length; i++) {
     celdas[i].addEventListener("click", (event)=>{
-        event.currentTarget.style.background="red"
+        event.currentTarget.style.background = "#ff7979";
     })
 }

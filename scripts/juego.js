@@ -1,4 +1,5 @@
 "use strict"
+var tiempoElegido = 180
 localStorage.setItem("Palabras formadas", "")
 //Función principal para formar la palabra
 async function formarPalabra(palabra) {
@@ -81,4 +82,17 @@ function iniciarTabla() {
         celda.innerHTML = letraElegida
     }
 }
+function comenzarTemporizador() {
+    var minutos = Math.floor(tiempoElegido / 60)
+    var segundos = tiempoElegido % 60
+    var temporizador = document.querySelector("#Temporizador>p")
+    temporizador.textContent = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`
+    if (tiempoElegido > 0) {
+        tiempoElegido--
+    } else {
+        clearInterval(intervaloTiempo)
+    }
+}
+var intervaloTiempo = setInterval(comenzarTemporizador, 1000)
 iniciarTabla()
+comenzarTemporizador(tiempoElegido)

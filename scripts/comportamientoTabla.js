@@ -80,7 +80,6 @@ function validarCeldasContiguas(celda, celdaAnterior){
 }
 //Permite mostrar y agregar las letras que se van seleccionando arriba de las celdas
 function visualizarLetra(letra){
-    debugger
     var palabraActual
     var contenedorPalabra
     var letrasActuales
@@ -96,7 +95,6 @@ function visualizarLetra(letra){
 }
 //Permite remover la última o todas las letras arriba de la tabla con las celdas
 function removerLetra(removerTodo){
-    debugger
     var contenedorPalabra
     var letrasActuales
     var letrasNuevas

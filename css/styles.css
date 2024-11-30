@@ -1,7 +1,6 @@
 html{
     background-color: #FFCAAF;
 }
-
 header{
     height: 110px;
     margin: 0px 0px 32px 0px;
@@ -16,8 +15,8 @@ header>h1{
     margin: 0px;
 }
 footer{
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    bottom: 0;
     width: 100%;
     background-color: #003550;
     color: #ffffff;
@@ -27,7 +26,6 @@ footer>*{
     left: 50px;
     list-style: none;
 }
-
 #Año{
     margin: 0;
     position: absolute;
@@ -35,7 +33,6 @@ footer>*{
     left: 80%;
     font-size: 50px;
 }
-
 #LogoConteiner{
     position: relative;
     bottom: 15px;

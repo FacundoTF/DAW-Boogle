@@ -84,10 +84,10 @@ function iniciarTabla() {
 function mostrarEstadisticas(){
     var puntajeTotal = localStorage.getItem("Puntaje")
     var palabrasEncontradas = localStorage.getItem("Palabras formadas").split("-")
-    var palabraMasLarga
+    var palabraMasLarga = ""
     palabrasEncontradas.pop()
     for (var i = 0; i < palabrasEncontradas.length; i++) {
-        if(palabraMasLarga === undefined){
+        if(palabraMasLarga === ""){
             palabraMasLarga = palabrasEncontradas[i]
             continue
         }

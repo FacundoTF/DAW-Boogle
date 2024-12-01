@@ -8,9 +8,9 @@ document.querySelector("#BotonInicio").addEventListener("click", (event) => {
         return
     }
     sessionStorage.setItem("Jugador", nombre)
-    window.open("/html/juego.html", "_self",)//En el primer parametro debe ir a la pagina del juego
+    window.open("/html/juego.html", "_self")//En el primer parametro debe ir a la pagina del juego
 })
-document.querySelector("#AlertaModalBoton").addEventListener("click", event => {
+document.querySelector(".AlertaModalBoton").addEventListener("click", event => {
     AlertaModal.style.display = "none"
 })
 function validarNombre(nombre){

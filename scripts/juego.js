@@ -46,8 +46,7 @@ async function verificarPalabra(palabra) {
     var resultado = false
     try{
         var respuesta = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + palabra)
-
-        if(respuesta.status == "404"){
+        if(respuesta.status === 404){
             throw new Error("No se encontro la palabra");
         }
         else{
@@ -82,6 +81,46 @@ function iniciarTabla() {
         celda.innerHTML = letraElegida
     }
 }
+function mostrarEstadisticas(){
+    var puntajeTotal = localStorage.getItem("Puntaje")
+    var palabrasEncontradas = localStorage.getItem("Palabras formadas").split("-")
+    var palabraMasLarga
+    palabrasEncontradas.pop()
+    for (var i = 0; i < palabrasEncontradas.length; i++) {
+        if(palabraMasLarga === undefined){
+            palabraMasLarga = palabrasEncontradas[i]
+            continue
+        }
+        if(palabraMasLarga.length < palabrasEncontradas[i].length){
+            palabraMasLarga = palabrasEncontradas[i]
+        }
+    }
+    document.getElementById("PuntosTotales").textContent = `Puntaje total: ${puntajeTotal}`
+    document.getElementById("PalabraLarga").textContent = `Palabra más larga: ${palabraMasLarga} (${palabraMasLarga.length} letras)`
+    document.getElementById("PalabrasFormadas").textContent = `Palabras encontradas: ${palabrasEncontradas.join(", ")}`
+
+}
+function tiempoTerminado(){
+    var alertaModal = document.getElementById("AlertaModal")
+    var botones = document.querySelectorAll(".AlertaModalBoton")
+    alertaModal.style.display = "flex"
+    for (var i = 0; i < botones.length; i++) {
+        botones[i].addEventListener("click", event => {
+            if(event.currentTarget.innerHTML === "Volver a jugar"){
+                alertaModal.style.display = "none"
+                location.reload()
+            }
+            if(event.currentTarget.innerHTML === "Registrar puntaje"){
+                alertaModal.style.display = "none"
+                window.open("", "_self")//Iria a la página de contacto
+            }
+            if(event.currentTarget.innerHTML === "Salir"){
+                alertaModal.style.display = "none"
+                window.open("/html/registro.html", "_self")
+            }
+        })
+    }
+}
 function comenzarTemporizador() {
     var minutos = Math.floor(tiempoElegido / 60)
     var segundos = tiempoElegido % 60
@@ -90,6 +129,8 @@ function comenzarTemporizador() {
     if (tiempoElegido > 0) {
         tiempoElegido--
     } else {
+        mostrarEstadisticas()
+        tiempoTerminado()
         clearInterval(intervaloTiempo)
     }
 }

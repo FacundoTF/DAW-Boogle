@@ -1,6 +1,7 @@
 "use strict"
 var tiempoElegido = 180
 localStorage.setItem("Palabras formadas", "")
+localStorage.setItem("fechaPartida", "")
 //Función principal para formar la palabra
 async function formarPalabra(palabra) {
     var palabrasFormadas
@@ -134,6 +135,22 @@ function comenzarTemporizador() {
         clearInterval(intervaloTiempo)
     }
 }
+function guardarMomentoPartida(){
+    var fechaActual = new Date()
+    var dia = fechaActual.getDate()
+    var mes = fechaActual.getMonth() + 1
+    var año = fechaActual.getFullYear()
+    var horas = fechaActual.getHours();
+    var minutos = fechaActual.getMinutes();
+    var segundos = fechaActual.getSeconds();
+    var diaFormateado = dia.toString().padStart(2, '0');
+    var mesFormateado = mes.toString().padStart(2, '0');
+    var horasFormateadas = horas.toString().padStart(2, '0');
+    var minutosFormateados = minutos.toString().padStart(2, '0');
+    var segundosFormateados = segundos.toString().padStart(2, '0');
+    localStorage.setItem("fechaPartida", `${diaFormateado}/${mesFormateado}/${año} ${horasFormateadas}:${minutosFormateados}:${segundosFormateados}`)
+}
 var intervaloTiempo = setInterval(comenzarTemporizador, 1000)
 iniciarTabla()
+guardarMomentoPartida()
 comenzarTemporizador(tiempoElegido)

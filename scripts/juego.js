@@ -1,156 +1,156 @@
 "use strict"
-var tiempoElegido = 180
+var TiempoElegido = 180
 localStorage.setItem("Palabras formadas", "")
-localStorage.setItem("fechaPartida", "")
-//Función principal para formar la palabra
-async function formarPalabra(palabra) {
-    var palabrasFormadas
-    var palabraFormada
-    var tablaPalabras
-    var elementoP
-    var palabraValida
-    var palabraRepetida
-    var removerTodasPalabras
-    if(typeof(palabra) != "string"){
+localStorage.setItem("FechaPartida", "")
+//Función principal para formar la Palabra
+async function FormarPalabra(Palabra) {
+    var PalabrasFormadas
+    var PalabraFormada
+    var TablaPalabras
+    var ElementoP
+    var PalabraValida
+    var PalabraRepetida
+    var RemoverTodasPalabras
+    if(typeof(Palabra) != "string"){
         return
     }
-    if(palabra.length < 3){
+    if(Palabra.length < 3){
         return
     }
-    palabraValida = await verificarPalabra(palabra)
-    if(palabraValida === true){
-        removerTodasPalabras = true
-        palabrasFormadas = localStorage.getItem("Palabras formadas")
-        palabraFormada = localStorage.getItem("Palabra")
-        tablaPalabras = document.getElementById("ListaPalabras")
-        palabraRepetida = buscarPalabraRepetida(palabraFormada)
-        if(palabraRepetida >= 0){
+    PalabraValida = await VerificarPalabra(Palabra)
+    if(PalabraValida === true){
+        RemoverTodasPalabras = true
+        PalabrasFormadas = localStorage.getItem("Palabras formadas")
+        PalabraFormada = localStorage.getItem("Palabra")
+        TablaPalabras = document.getElementById("ListaPalabras")
+        PalabraRepetida = BuscarPalabraRepetida(PalabraFormada)
+        if(PalabraRepetida >= 0){
             return
         }
-        elementoP = document.createElement("p")
-        elementoP.append(palabraFormada)
-        elementoP.className = "PalabraFormada"
-        sumarPuntos()
+        ElementoP = document.createElement("p")
+        ElementoP.append(PalabraFormada)
+        ElementoP.className = "PalabraFormada"
+        SumarPuntos()
         resetarEstiloCelda()
-        removerLetra(removerTodasPalabras)
-        palabraFormada = palabraFormada + "-"
-        palabrasFormadas = palabrasFormadas + palabraFormada
-        tablaPalabras.append(elementoP)
-        localStorage.setItem("Ultima celda", "")
-        localStorage.setItem("Palabras formadas", palabrasFormadas)
+        RemoverLetra(RemoverTodasPalabras)
+        PalabraFormada = PalabraFormada + "-"
+        PalabrasFormadas = PalabrasFormadas + PalabraFormada
+        TablaPalabras.append(ElementoP)
+        localStorage.setItem("Ultima Celda", "")
+        localStorage.setItem("Palabras formadas", PalabrasFormadas)
     }else{
-        restarPuntos()
+        RestarPuntos()
     }
 }
-//Verifica si la palabra formada existe en la API o no
-async function verificarPalabra(palabra) {
-    var resultado = false
+//Verifica si la Palabra formada existe en la API o no
+async function VerificarPalabra(Palabra) {
+    var Resultado = false
     try{
-        var respuesta = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + palabra)
+        var respuesta = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + Palabra)
         if(respuesta.status === 404){
-            throw new Error("No se encontro la palabra");
+            throw new Error("No se encontro la Palabra");
         }
         else{
-            resultado = true
+            Resultado = true
 
-            return resultado
+            return Resultado
         }
     }
     catch(Error){
-        return resultado
+        return Resultado
     }
 }
-//Verifica si la palabra formada es repetida o no
-function buscarPalabraRepetida(palabraFormada){
-    var palabrasFormadas
-    var resultado
-    palabrasFormadas = localStorage.getItem("Palabras formadas")
-    resultado = palabrasFormadas.search(palabraFormada)
-    return resultado
+//Verifica si la Palabra formada es repetida o no
+function BuscarPalabraRepetida(PalabraFormada){
+    var PalabrasFormadas
+    var Resultado
+    PalabrasFormadas = localStorage.getItem("Palabras formadas")
+    Resultado = PalabrasFormadas.search(PalabraFormada)
+    return Resultado
 }
-//Coloca las letras en las celdas de la tabla
-function iniciarTabla() {
-    var abecedario = "abcdefghijklmnopqrstuvxyz"
-    var celdas = document.getElementsByClassName("CeldaPalabra")
-    var celda
-    var palabraNumero
-    var letraElegida
-    for (var i = 0; i < celdas.length; i++) {
-        var celda = celdas.item(i)
-        palabraNumero = Math.floor(Math.random() * abecedario.length) + 1
-        letraElegida = abecedario.slice(palabraNumero - 1, palabraNumero)
-        celda.innerHTML = letraElegida
+//Coloca las letras en las Celdas de la tabla
+function IniciarTabla() {
+    var Abecedario = "abcdefghijklmnopqrstuvxyz"
+    var Celdas = document.getElementsByClassName("CeldaPalabra")
+    var Celda
+    var PalabraNumero
+    var LetraElegida
+    for (var i = 0; i < Celdas.length; i++) {
+        var Celda = Celdas.item(i)
+        PalabraNumero = Math.floor(Math.random() * Abecedario.length) + 1
+        LetraElegida = Abecedario.slice(PalabraNumero - 1, PalabraNumero)
+        Celda.innerHTML = LetraElegida
     }
 }
-function mostrarEstadisticas(){
-    var puntajeTotal = localStorage.getItem("Puntaje")
-    var palabrasEncontradas = localStorage.getItem("Palabras formadas").split("-")
-    var palabraMasLarga = ""
-    palabrasEncontradas.pop()
-    for (var i = 0; i < palabrasEncontradas.length; i++) {
-        if(palabraMasLarga === ""){
-            palabraMasLarga = palabrasEncontradas[i]
+function MostrarEstadisticas(){
+    var PuntajeTotal = localStorage.getItem("Puntaje")
+    var PalabrasEncontradas = localStorage.getItem("Palabras formadas").split("-")
+    var PalabraMasLarga = ""
+    PalabrasEncontradas.pop()
+    for (var i = 0; i < PalabrasEncontradas.length; i++) {
+        if(PalabraMasLarga === ""){
+            PalabraMasLarga = PalabrasEncontradas[i]
             continue
         }
-        if(palabraMasLarga.length < palabrasEncontradas[i].length){
-            palabraMasLarga = palabrasEncontradas[i]
+        if(PalabraMasLarga.length < PalabrasEncontradas[i].length){
+            PalabraMasLarga = PalabrasEncontradas[i]
         }
     }
-    document.getElementById("PuntosTotales").textContent = `Puntaje total: ${puntajeTotal}`
-    document.getElementById("PalabraLarga").textContent = `Palabra más larga: ${palabraMasLarga} (${palabraMasLarga.length} letras)`
-    document.getElementById("PalabrasFormadas").textContent = `Palabras encontradas: ${palabrasEncontradas.join(", ")}`
+    document.getElementById("PuntosTotales").textContent = `Puntaje total: ${PuntajeTotal}`
+    document.getElementById("PalabraLarga").textContent = `Palabra más larga: ${PalabraMasLarga} (${PalabraMasLarga.length} letras)`
+    document.getElementById("PalabrasFormadas").textContent = `Palabras encontradas: ${PalabrasEncontradas.join(", ")}`
 
 }
-function tiempoTerminado(){
-    var alertaModal = document.getElementById("AlertaModal")
-    var botones = document.querySelectorAll(".AlertaModalBoton")
-    alertaModal.style.display = "flex"
-    for (var i = 0; i < botones.length; i++) {
-        botones[i].addEventListener("click", event => {
+function TiempoTerminado(){
+    var AlertaModal = document.getElementById("AlertaModal")
+    var Botones = document.querySelectorAll(".AlertaModalBoton")
+    AlertaModal.style.display = "flex"
+    for (var i = 0; i < Botones.length; i++) {
+        Botones[i].addEventListener("click", event => {
             if(event.currentTarget.innerHTML === "Volver a jugar"){
-                alertaModal.style.display = "none"
+                AlertaModal.style.display = "none"
                 location.reload()
             }
             if(event.currentTarget.innerHTML === "Registrar puntaje"){
-                alertaModal.style.display = "none"
+                AlertaModal.style.display = "none"
                 window.open("", "_self")//Iria a la página de contacto
             }
             if(event.currentTarget.innerHTML === "Salir"){
-                alertaModal.style.display = "none"
+                AlertaModal.style.display = "none"
                 window.open("/html/registro.html", "_self")
             }
         })
     }
 }
-function comenzarTemporizador() {
-    var minutos = Math.floor(tiempoElegido / 60)
-    var segundos = tiempoElegido % 60
-    var temporizador = document.querySelector("#Temporizador>p")
-    temporizador.textContent = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`
-    if (tiempoElegido > 0) {
-        tiempoElegido--
+function ComenzarTemporizador() {
+    var Minutos = Math.floor(TiempoElegido / 60)
+    var Segundos = TiempoElegido % 60
+    var Temporizador = document.querySelector("#Temporizador>p")
+    Temporizador.textContent = `${Minutos.toString().padStart(2, '0')}:${Segundos.toString().padStart(2, '0')}`
+    if (TiempoElegido > 0) {
+        TiempoElegido--
     } else {
-        mostrarEstadisticas()
-        tiempoTerminado()
-        clearInterval(intervaloTiempo)
+        MostrarEstadisticas()
+        TiempoTerminado()
+        clearInterval(IntervaloTiempo)
     }
 }
-function guardarMomentoPartida(){
-    var fechaActual = new Date()
-    var dia = fechaActual.getDate()
-    var mes = fechaActual.getMonth() + 1
-    var año = fechaActual.getFullYear()
-    var horas = fechaActual.getHours();
-    var minutos = fechaActual.getMinutes();
-    var segundos = fechaActual.getSeconds();
-    var diaFormateado = dia.toString().padStart(2, '0');
-    var mesFormateado = mes.toString().padStart(2, '0');
-    var horasFormateadas = horas.toString().padStart(2, '0');
-    var minutosFormateados = minutos.toString().padStart(2, '0');
-    var segundosFormateados = segundos.toString().padStart(2, '0');
-    localStorage.setItem("fechaPartida", `${diaFormateado}/${mesFormateado}/${año} ${horasFormateadas}:${minutosFormateados}:${segundosFormateados}`)
+function GuardarMomentoPartida(){
+    var FechaActual = new Date()
+    var Dia = FechaActual.getDate()
+    var Mes = FechaActual.getMonth() + 1
+    var Año = FechaActual.getFullYear()
+    var Horas = FechaActual.getHours();
+    var Minutos = FechaActual.getMinutes();
+    var Segundos = FechaActual.getSeconds();
+    var DiaFormateado = Dia.toString().padStart(2, '0');
+    var MesFormateado = Mes.toString().padStart(2, '0');
+    var HorasFormateadas = Horas.toString().padStart(2, '0');
+    var MinutosFormateados = Minutos.toString().padStart(2, '0');
+    var SegundosFormateados = Segundos.toString().padStart(2, '0');
+    localStorage.setItem("FechaPartida", `${DiaFormateado}/${MesFormateado}/${Año} ${HorasFormateadas}:${MinutosFormateados}:${SegundosFormateados}`)
 }
-var intervaloTiempo = setInterval(comenzarTemporizador, 1000)
-iniciarTabla()
-guardarMomentoPartida()
-comenzarTemporizador(tiempoElegido)
+var IntervaloTiempo = setInterval(ComenzarTemporizador, 1000)
+IniciarTabla()
+GuardarMomentoPartida()
+ComenzarTemporizador(TiempoElegido)

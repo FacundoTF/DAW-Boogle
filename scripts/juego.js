@@ -31,7 +31,7 @@ async function FormarPalabra(Palabra) {
         ElementoP.append(PalabraFormada)
         ElementoP.className = "PalabraFormada"
         SumarPuntos()
-        resetarEstiloCelda()
+        ResetarEstiloCelda()
         RemoverLetra(RemoverTodasPalabras)
         PalabraFormada = PalabraFormada + "-"
         PalabrasFormadas = PalabrasFormadas + PalabraFormada

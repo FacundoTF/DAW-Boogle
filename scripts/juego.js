@@ -117,7 +117,7 @@ function TiempoTerminado(){
             }
             if(event.currentTarget.innerHTML === "Salir"){
                 AlertaModal.style.display = "none"
-                window.open("/html/registro.html", "_self")
+                window.open("/html/index.html", "_self")
             }
         })
     }

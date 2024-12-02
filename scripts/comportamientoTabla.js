@@ -1,115 +1,115 @@
 "use strict"
-var celdas = document.getElementsByClassName("CeldaPalabra")
+var Celdas = document.getElementsByClassName("CeldaPalabra")
 localStorage.setItem("Palabra", "")
-localStorage.setItem("Ultima celda", "")
+localStorage.setItem("Ultima Celda", "")
 //Funcion principal que controla el comportamiento de las celdas
-async function comportamientoCeldas(){
-    var letras
-    var letrasRestantes
-    var celdasSeleccionadas
-    var celdaValida
-    var mismaCelda
-    var celdasRestantes
-    var removerTodasPalabras
-    for (var i = 0; i < celdas.length; i++) {
-        celdas[i].addEventListener("click", (event)=>{
-            letras = localStorage.getItem("Palabra")
-            celdasSeleccionadas = localStorage.getItem("Ultima celda")
-            mismaCelda = deseleccionarCelda(event.target)
-            if(mismaCelda){
+async function ComportamientoCeldas(){
+    var Letras
+    var LetrasRestantes
+    var CeldasSeleccionadas
+    var CeldaValida
+    var MismaCelda
+    var CeldasRestantes
+    var RemoverTodasPalabras
+    for (var i = 0; i < Celdas.length; i++) {
+        Celdas[i].addEventListener("click", (event)=>{
+            Letras = localStorage.getItem("Palabra")
+            CeldasSeleccionadas = localStorage.getItem("Ultima Celda")
+            MismaCelda = DeseleccionarCelda(event.target)
+            if(MismaCelda){
                 event.currentTarget.style.background = "#FFFFFF"
-                removerTodasPalabras = false
-                letrasRestantes = letras.slice(0,-1)
-                celdasRestantes = celdasSeleccionadas.slice(0,-13)
-                localStorage.setItem("Palabra", letrasRestantes)
-                localStorage.setItem("Ultima celda", celdasRestantes)
-                removerLetra(removerTodasPalabras)
+                RemoverTodasPalabras = false
+                LetrasRestantes = Letras.slice(0,-1)
+                CeldasRestantes = CeldasSeleccionadas.slice(0,-13)
+                localStorage.setItem("Palabra", LetrasRestantes)
+                localStorage.setItem("Ultima Celda", CeldasRestantes)
+                RemoverLetra(RemoverTodasPalabras)
                 return
             }
-            if(letras.length >= 1){
-                celdaValida = validarCeldasContiguas(event.target,celdasSeleccionadas)
-                if(celdaValida === false){
-                    removerTodasPalabras = true
-                    removerLetra(removerTodasPalabras)
+            if(Letras.length >= 1){
+                CeldaValida = ValidarCeldasContiguas(event.target,CeldasSeleccionadas)
+                if(CeldaValida === false){
+                    RemoverTodasPalabras = true
+                    RemoverLetra(RemoverTodasPalabras)
                     return
                 }
-                localStorage.setItem("Palabra", letras + event.currentTarget.innerHTML)
-                visualizarLetra(event.currentTarget.innerText)
+                localStorage.setItem("Palabra", Letras + event.currentTarget.innerHTML)
+                VisualizarLetra(event.currentTarget.innerText)
             }else{
                 localStorage.setItem("Palabra", event.currentTarget.innerHTML)
-                visualizarLetra(event.currentTarget.innerText)
+                VisualizarLetra(event.currentTarget.innerText)
             }
-            localStorage.setItem("Ultima celda", `${celdasSeleccionadas}/fila:${event.target.parentElement.rowIndex+1}-col:${event.target.cellIndex+1}`)
+            localStorage.setItem("Ultima Celda", `${CeldasSeleccionadas}/fila:${event.target.parentElement.rowIndex+1}-col:${event.target.cellIndex+1}`)
             event.currentTarget.style.background = "#FF0000"
-            formarPalabra(localStorage.getItem("Palabra"))
+            FormarPalabra(localStorage.getItem("Palabra"))
         })
     }
 }
-function deseleccionarCelda(celda){
-    var filaActual = celda.parentElement.rowIndex + 1
-    var columnaActual = celda.cellIndex + 1
-    var celdasAlmacenadas = localStorage.getItem("Ultima celda")
-    var celdaSeleccionada = celdasAlmacenadas.substring(celdasAlmacenadas.length - 13)
-    var filaSeleccionada = parseInt(celdaSeleccionada.substring(6,7))
-    var columnaSeleccionada = parseInt(celdaSeleccionada.substring(12,13))
-    if(filaActual === filaSeleccionada && columnaActual === columnaSeleccionada){
+function DeseleccionarCelda(Celda){
+    var FilaActual = Celda.parentElement.rowIndex + 1
+    var ColumnaActual = Celda.cellIndex + 1
+    var CeldasAlmacenadas = localStorage.getItem("Ultima Celda")
+    var CeldaSeleccionada = CeldasAlmacenadas.substring(CeldasAlmacenadas.length - 13)
+    var FilaSeleccionada = parseInt(CeldaSeleccionada.substring(6,7))
+    var ColumnaSeleccionada = parseInt(CeldaSeleccionada.substring(12,13))
+    if(FilaActual === FilaSeleccionada && ColumnaActual === ColumnaSeleccionada){
         return true
     }else{
         return false
     }
 }
-function resetarEstiloCelda(){
-    for (var i = 0; i < celdas.length; i++) {
-        celdas[i].style.background = "#FFFFFF"
+function ResetarEstiloCelda(){
+    for (var i = 0; i < Celdas.length; i++) {
+        Celdas[i].style.background = "#FFFFFF"
     }
     localStorage.setItem("Palabra", "")
 }
-function validarCeldasContiguas(celda, celdaAnterior){
-    var celdaA = celdaAnterior.substring(celdaAnterior.length - 13)
-    var filaAnterior = parseInt(celdaA.substring(6,7))
-    var columnaAnterior = parseInt(celdaA.substring(12,13))
-    var filaActual = celda.parentElement.rowIndex + 1
-    var columnaActual = celda.cellIndex + 1    
-    if(Math.abs(filaActual - filaAnterior) <= 1 && Math.abs(columnaActual - columnaAnterior) <= 1 && celda.style.background !== "rgb(255, 0, 0)"){
+function ValidarCeldasContiguas(Celda, CeldaAnterior){
+    var CeldaA = CeldaAnterior.substring(CeldaAnterior.length - 13)
+    var FilaAnterior = parseInt(CeldaA.substring(6,7))
+    var ColumnaAnterior = parseInt(CeldaA.substring(12,13))
+    var FilaActual = Celda.parentElement.rowIndex + 1
+    var ColumnaActual = Celda.cellIndex + 1    
+    if(Math.abs(FilaActual - FilaAnterior) <= 1 && Math.abs(ColumnaActual - ColumnaAnterior) <= 1 && Celda.style.background !== "rgb(255, 0, 0)"){
         return true
     }else{
-        resetarEstiloCelda()
-        localStorage.setItem("Ultima celda", "")
+        ResetarEstiloCelda()
+        localStorage.setItem("Ultima Celda", "")
         return false
     }
 }
 //Permite mostrar y agregar las letras que se van seleccionando arriba de las celdas
-function visualizarLetra(letra){
-    var palabraActual
-    var contenedorPalabra
-    var letrasActuales
-    palabraActual = localStorage.getItem("Palabra")
-    contenedorPalabra = document.getElementById("PalabraFormandose")
-    letrasActuales = document.querySelector("#PalabraFormandose>p")
-    contenedorPalabra.style.visibility = "visible"
-    if(palabraActual.length === 1){
-        letrasActuales.innerHTML = letra
+function VisualizarLetra(Letra){
+    var PalabraActual
+    var ContenedorPalabra
+    var LetrasActuales
+    PalabraActual = localStorage.getItem("Palabra")
+    ContenedorPalabra = document.getElementById("PalabraFormandose")
+    LetrasActuales = document.querySelector("#PalabraFormandose>p")
+    ContenedorPalabra.style.visibility = "visible"
+    if(PalabraActual.length === 1){
+        LetrasActuales.innerHTML = Letra
     }else{
-        letrasActuales.innerHTML = letrasActuales.innerHTML + letra
+        LetrasActuales.innerHTML = LetrasActuales.innerHTML + Letra
     }
 }
 //Permite remover la última o todas las letras arriba de la tabla con las celdas
-function removerLetra(removerTodo){
-    var contenedorPalabra
-    var letrasActuales
-    var letrasNuevas
-    contenedorPalabra = document.getElementById("PalabraFormandose")
-    letrasActuales = document.querySelector("#PalabraFormandose>p")
-    letrasNuevas = letrasActuales.innerHTML.slice(0,-1)
-    if(letrasNuevas.length === 0){
-        contenedorPalabra.style.visibility = "hidden"
-    }else if(removerTodo === true){
-        letrasActuales.innerHTML = ""
-        contenedorPalabra.style.visibility = "hidden"
+function RemoverLetra(RemoverTodo){
+    var ContenedorPalabra
+    var LetrasActuales
+    var LetrasNuevas
+    ContenedorPalabra = document.getElementById("PalabraFormandose")
+    LetrasActuales = document.querySelector("#PalabraFormandose>p")
+    LetrasNuevas = LetrasActuales.innerHTML.slice(0,-1)
+    if(LetrasNuevas.length === 0){
+        ContenedorPalabra.style.visibility = "hidden"
+    }else if(RemoverTodo === true){
+        LetrasActuales.innerHTML = ""
+        ContenedorPalabra.style.visibility = "hidden"
     }else{
-        letrasActuales.innerHTML = letrasNuevas
+        LetrasActuales.innerHTML = LetrasNuevas
     }
 }
-comportamientoCeldas()
+ComportamientoCeldas()
 
 

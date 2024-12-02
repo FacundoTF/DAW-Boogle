@@ -1,23 +1,18 @@
 "use strict"
 localStorage.setItem("Puntaje", "0")
-function sumarPuntos() {
-    var puntajeSumar = parseInt(localStorage.getItem("Puntaje"))
-
-    puntajeSumar += 10
-
-    localStorage.setItem("Puntaje", `${puntajeSumar}`)
+function SumarPuntos() {
+    var PuntajeSumar = parseInt(localStorage.getItem("Puntaje"))
+    PuntajeSumar += 10
+    localStorage.setItem("Puntaje", `${PuntajeSumar}`)
 }
-function restarPuntos(){
-    var puntajeRestar = parseInt(localStorage.getItem("Puntaje"))
-
-    puntajeRestar -= 10
-
-    if(puntajeRestar < 0){
-        puntajeRestar = 0
+function RestarPuntos(){
+    var PuntajeRestar = parseInt(localStorage.getItem("Puntaje"))
+    PuntajeRestar -= 10
+    if(PuntajeRestar < 0){
+        PuntajeRestar = 0
     }
-
-    localStorage.setItem("Puntaje", `${puntajeRestar}`)
+    localStorage.setItem("Puntaje", `${PuntajeRestar}`)
 }
-function resetarPuntos(){
+function ResetarPuntos(){
     localStorage.setItem("Puntaje", 0)
 }

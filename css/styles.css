@@ -531,16 +531,82 @@ footer ul li {
     transform: translateY(1px);
     box-shadow: 0px 2px 4px rgba(255, 255, 255, 0.2);
 }
-/* Animación de entrada */
+/* Estilos generales para mensajes de error */
+.formulario__input-error {
+    display: none; /* Ocultar errores por defecto */
+    color: red;
+    font-size: 0.85em;
+    margin-top: 5px;
+    animation: fadeIn 0.3s ease-in-out; /* Animación al mostrar error */
+}
+.formulario__mensaje-exito {
+    display: none; /* El mensaje estará oculto inicialmente */
+}
+.formulario__input-error-activo {
+    display: block; /* Mostrar el mensaje de error */
+}
+/* Estilos para los inputs y textareas en estado incorrecto */
+.formulario__grupo-incorrecto input,
+.formulario__grupo-incorrecto textarea {
+    border: 2px solid red; /* Borde rojo para errores */
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(255, 0, 0, 0.5); /* Sombra roja */
+}
+/* Estilos para los inputs y textareas en estado correcto */
+.formulario__grupo-correcto input,
+.formulario__grupo-correcto textarea {
+    border: 2px solid green; /* Borde verde para válidos */
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(0, 255, 0, 0.5); /* Sombra verde */
+}
+/* Estilos para el ícono de validación */
+.formulario__validacion-estado {
+    display: none;
+    margin-left: 10px;
+    font-size: 1.2em;
+}
+.formulario__grupo-correcto .formulario__validacion-estado {
+    display: inline-block;
+    color: green; /* Ícono verde si es válido */
+}
+.formulario__grupo-incorrecto .formulario__validacion-estado {
+    display: inline-block;
+    color: red; /* Ícono rojo si es inválido */
+}
+/* Animación de entrada para los errores */
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-20px); /* Aparece desde arriba */
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0); /* Posición final */
     }
+}
+/* Opcional: Estilo adicional para el formulario */
+form {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+/* Opcional: Botón */
+button[type="submit"] {
+    background-color: #28a745; /* Verde */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button[type="submit"]:hover {
+    background-color: #218838; /* Verde más oscuro */
 }
 /* ----- Responsive ----- */
 /* Media Queries para pantallas pequeñas */

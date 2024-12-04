@@ -12,53 +12,53 @@ body {
     background-color: #FFCAAF;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Esto asegura que el body siempre ocupe toda la altura de la ventana */
+    min-height: 100vh;
     
 }
 header, footer {
     width: 100%;
 }
 main {
-    flex-grow: 1; /* Esto permite que el contenido principal ocupe todo el espacio disponible entre header y footer */
+    flex-grow: 1;
 }
 header {
-    display: flex; /* Activar Flexbox */
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 110px;
     margin: 0px 0px 32px 0px;
     background-color: #003550;
     color: #ffffff;
-    text-align: center; /* Centrar texto dentro del header */
+    text-align: center;
 }
 header > h1 {
-    position: static; /* Eliminar el desplazamiento relativo */
-    margin: 0; /* Evitar márgenes innecesarios */
-    font-size: 2rem; /* Ajusta el tamaño de la fuente según sea necesario */
+    position: static;
+    margin: 0;
+    font-size: 2rem;
 }
 footer {
     top: 100%;
     display: flex;
-    flex-direction: column; /* Mantener los elementos en una columna */
-    align-items: center; /* Centra todo en el eje horizontal */
-    justify-content: center; /* Alinea el contenido en el centro verticalmente */
-    padding: 10px 20px; /* Espaciado adecuado para evitar pegajoso */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
     width: 100%;
     background-color: #003550;
     color: #ffffff;
-    text-align: center; /* Alinea todo el texto al centro */
-    box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.2); /* Añadir sombra sutil */
+    text-align: center;
+    box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.2);
 }
 footer ul {
-    display: flex; /* Organiza los elementos de la lista en una fila */
-    flex-direction: row; /* Los elementos están en fila */
+    display: flex;
+    flex-direction: row;
     padding: 0;
     margin: 5px 0;
 }
 footer ul li {
-    list-style: none; /* Elimina puntos de la lista */
-    font-size: 1rem; /* Ajuste de tamaño de fuente */
-    margin: 0 10px; /* Separación uniforme entre elementos */
+    list-style: none;
+    font-size: 1rem;
+    margin: 0 10px;
 }
 .Boton {
     background-color: #007BFF;
@@ -72,7 +72,7 @@ footer ul li {
     margin: 10px;
 }
 .Boton:hover {
-    background-color: #0056b3; /* Color más oscuro al pasar el ratón */
+    background-color: #0056b3;
 }
 /* ----- Registro ----- */
 #LogoConteiner{
@@ -229,7 +229,7 @@ footer ul li {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 150px; /* Ajustar la altura del contenedor */
+    height: 150px;
 }
 #Logo {
     margin: 0;
@@ -249,8 +249,8 @@ footer ul li {
     text-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
 }
 #Año {
-    font-size: 1.5rem; /* Tamaño del texto del año */
-    margin: 10px 0; /* Espaciado para que no quede pegado */
+    font-size: 1.5rem;
+    margin: 10px 0;
 }
 /*AlertaModal*/
 #AlertaModal {
@@ -258,7 +258,7 @@ footer ul li {
     position: absolute;
     flex-direction: row;
     justify-content: center;
-    align-items: center; /* Alineación vertical y horizontal */
+    align-items: center;
     width: 100%;
     height: 100%;
     top: 0;
@@ -270,9 +270,9 @@ footer ul li {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 60%; /* Ajusta el tamaño vertical */
-    width: 90%; /* Hace que el modal ocupe el 90% del ancho */
-    max-width: 620px; /* Limita el ancho máximo */
+    height: 60%; 
+    width: 90%; 
+    max-width: 620px; 
     font-size: 1.5rem;
     background-color: #003550;
     color: #ffffff;
@@ -290,7 +290,7 @@ footer ul li {
     width: max-content;
     align-self: center;
     margin: 10px;
-    text-align: center; /* Asegura que el texto esté centrado */
+    text-align: center; 
 }
 #AlertaModal > div > button {
     width: 80%;
@@ -340,11 +340,11 @@ footer ul li {
 }
 #ContenedorJuego {
     display: flex;
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center; /* Centra el contenido verticalmente */
-    flex-grow: 1; /* Hace que el contenedor del juego ocupe el espacio disponible */
-    width: 100%; /* Ocupar todo el ancho de la ventana */
-    flex-wrap: wrap; /* Permite que los elementos se acomoden en múltiples líneas si es necesario */
+    justify-content: center;
+    align-items: center; 
+    flex-grow: 1; 
+    width: 100%; 
+    flex-wrap: wrap; 
 }
 #TablaJuego {
     position: relative;
@@ -353,25 +353,25 @@ footer ul li {
     background-color: #FFFFFF;
     border-collapse: collapse;
     table-layout: fixed;
-    margin: 10px; /* Espaciado para separar elementos en pantallas pequeñas */
+    margin: 10px; 
 }
 #ContenedorPalabras {
     display: flex;
     position: relative;
     justify-content: center;
-    flex-wrap: wrap; /* Permite reacomodar los elementos si hay poco espacio */
-    width: 100%; /* Asegura que ocupe el ancho completo en pantallas pequeñas */
+    flex-wrap: wrap;
+    width: 100%;
 }
 #ListaPalabras {
     position: relative;
-    left: auto; /* Elimina el desplazamiento fijo para pantallas pequeñas */
-    bottom: auto; /* Ajuste para evitar desbordes */
+    left: auto;
+    bottom: auto;
     align-content: center;
     width: 300px;
     box-sizing: border-box;
     border: 20px solid #000000;
     background-color: #00c7bd;
-    margin: 10px; /* Espaciado para evitar desbordes */
+    margin: 10px;
 }
 #PalabraFormandose>p{
     margin: 0;
@@ -536,31 +536,31 @@ footer ul li {
 }
 /* Estilos generales para mensajes de error */
 .formulario__input-error {
-    display: none; /* Ocultar errores por defecto */
+    display: none;
     color: red;
     font-size: 0.85em;
     margin-top: 5px;
-    animation: fadeIn 0.3s ease-in-out; /* Animación al mostrar error */
+    animation: fadeIn 0.3s ease-in-out;
 }
 .formulario__mensaje-exito {
-    display: none; /* El mensaje estará oculto inicialmente */
+    display: none;
 }
 .formulario__input-error-activo {
-    display: block; /* Mostrar el mensaje de error */
+    display: block; 
 }
 /* Estilos para los inputs y textareas en estado incorrecto */
 .formulario__grupo-incorrecto input,
 .formulario__grupo-incorrecto textarea {
-    border: 2px solid red; /* Borde rojo para errores */
+    border: 2px solid red; 
     outline: none;
-    box-shadow: 0px 0px 5px rgba(255, 0, 0, 0.5); /* Sombra roja */
+    box-shadow: 0px 0px 5px rgba(255, 0, 0, 0.5);
 }
 /* Estilos para los inputs y textareas en estado correcto */
 .formulario__grupo-correcto input,
 .formulario__grupo-correcto textarea {
-    border: 2px solid green; /* Borde verde para válidos */
+    border: 2px solid green;
     outline: none;
-    box-shadow: 0px 0px 5px rgba(0, 255, 0, 0.5); /* Sombra verde */
+    box-shadow: 0px 0px 5px rgba(0, 255, 0, 0.5);
 }
 /* Estilos para el ícono de validación */
 .formulario__validacion-estado {
@@ -631,7 +631,6 @@ button[type="submit"]:hover {
         border-width: 10px; /* Reduce el tamaño del borde */
     }
 }
-
 @media (max-width: 480px) {
     #TablaJuego {
         height: 200px;

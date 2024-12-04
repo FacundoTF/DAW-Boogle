@@ -52,7 +52,6 @@ async function VerificarPalabra(Palabra) {
         }
         else{
             Resultado = true
-
             return Resultado
         }
     }
@@ -129,7 +128,11 @@ function ComenzarTemporizador() {
     Temporizador.textContent = `${Minutos.toString().padStart(2, '0')}:${Segundos.toString().padStart(2, '0')}`
     if (TiempoElegido > 0) {
         TiempoElegido--
+        if(TiempoElegido < 10){
+            Temporizador.style.color = "#FF0000"
+        }
     } else {
+        Temporizador.style.color = "#000000"
         MostrarEstadisticas()
         TiempoTerminado()
         clearInterval(IntervaloTiempo)

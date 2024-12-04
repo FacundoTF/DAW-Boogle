@@ -48,7 +48,7 @@ footer {
     background-color: #003550;
     color: #ffffff;
     text-align: center; /* Alinea todo el texto al centro */
-    box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.2); /* Añadir sombra sutil */
+    box-shadow: 0px -2px 6px #00000033; /* Añadir sombra sutil */
 }
 footer ul {
     display: flex; /* Organiza los elementos de la lista en una fila */
@@ -150,17 +150,17 @@ footer ul li {
     background: linear-gradient(45deg,#0072FF, #00C6FF, #0072FF);
     border: none;
     border-radius: 8px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 5px 10px #0000004d;
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
 }
 #Registro>button:hover, #AlertaModal>div>button:hover {
     transform: scale(1.05);
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 8px 15px #00000066;
 }
 #Registro>button:active, #AlertaModal>div>button:active {
     transform: scale(0.95);
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 3px 8px #00000033;
 }
 /* Cambios esteticos "EntradaNombre" */
 #Registro>input {
@@ -175,14 +175,14 @@ footer ul li {
     background: #ffffff;
     border: 2px solid #00C6FF;
     border-radius: 8px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 10px #0000001a;
     padding: 0 15px;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 #Registro>input:focus {
     outline: none;
     border-color: #0072FF;
-    box-shadow: 0px 8px 15px rgba(0, 114, 255, 0.3);
+    box-shadow: 0px 8px 15px #0072ff4d;
 }
 #Registro>input::placeholder {
     color: #999999;
@@ -228,12 +228,12 @@ footer ul li {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: 3px;
-    text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+    text-shadow: 0px 3px 6px #00000033;
     transition: transform 0.3s, text-shadow 0.3s;
 }
 #LogoConteiner:hover #Logo {
     transform: scale(1.1);
-    text-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+    text-shadow: 0px 6px 12px #00000066;
 }
 #Año {
     font-size: 1.5rem; /* Tamaño del texto del año */
@@ -249,7 +249,7 @@ footer ul li {
     width: 100%;
     height: 100%;
     top: 0;
-    background-color: rgba(94, 91, 90, 0.6);
+    background-color: #5e5b5a99;
     z-index: 1;
 }
 #AlertaModal > div {
@@ -265,7 +265,7 @@ footer ul li {
     color: #ffffff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 10px #0000004d;
     transition: all 0.3s ease-in-out;
 }
 #AlertaModal > div > h2 {
@@ -289,17 +289,17 @@ footer ul li {
     background: linear-gradient(45deg, #0072FF, #00C6FF, #0072FF);
     border: none;
     border-radius: 8px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 5px 10px #0000004d;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 #AlertaModal > div > button:hover {
     transform: scale(1.05);
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 8px 15px #00000066;
 }
 #AlertaModal > div > button:active {
     transform: scale(0.95);
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 3px 8px #00000033;
 }
 /*----- JUEGO.HTML ----- */
 .FilaPalabra {
@@ -366,6 +366,7 @@ footer ul li {
     top: 70px;
     margin: 0;
     font: bold 52px sans-serif;
+    color: #000000;
 }    
 #ListaPalabras>p{
     text-align: center;

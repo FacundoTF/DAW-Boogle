@@ -18,7 +18,6 @@ body {
 header, footer {
     width: 100%;
 }
-
 main {
     flex-grow: 1; /* Esto permite que el contenido principal ocupe todo el espacio disponible entre header y footer */
 }
@@ -72,7 +71,6 @@ footer ul li {
     transition: background-color 0.3s ease;
     margin: 10px;
 }
-
 .Boton:hover {
     background-color: #0056b3; /* Color más oscuro al pasar el ratón */
 }
@@ -346,29 +344,34 @@ footer ul li {
     align-items: center; /* Centra el contenido verticalmente */
     flex-grow: 1; /* Hace que el contenedor del juego ocupe el espacio disponible */
     width: 100%; /* Ocupar todo el ancho de la ventana */
+    flex-wrap: wrap; /* Permite que los elementos se acomoden en múltiples líneas si es necesario */
 }
-#TablaJuego{
+#TablaJuego {
     position: relative;
     height: 480px;
     width: 480px;
     background-color: #FFFFFF;
     border-collapse: collapse;
     table-layout: fixed;
+    margin: 10px; /* Espaciado para separar elementos en pantallas pequeñas */
 }
-#ContenedorPalabras{
+#ContenedorPalabras {
     display: flex;
     position: relative;
     justify-content: center;
+    flex-wrap: wrap; /* Permite reacomodar los elementos si hay poco espacio */
+    width: 100%; /* Asegura que ocupe el ancho completo en pantallas pequeñas */
 }
-#ListaPalabras{
+#ListaPalabras {
     position: relative;
-    left: 500px;
-    bottom: 490px;
+    left: auto; /* Elimina el desplazamiento fijo para pantallas pequeñas */
+    bottom: auto; /* Ajuste para evitar desbordes */
     align-content: center;
     width: 300px;
     box-sizing: border-box;
     border: 20px solid #000000;
     background-color: #00c7bd;
+    margin: 10px; /* Espaciado para evitar desbordes */
 }
 #PalabraFormandose>p{
     margin: 0;
@@ -607,14 +610,39 @@ button[type="submit"]:hover {
         max-width: 500px; /* Reducir el ancho máximo en pantallas pequeñas */
         padding: 15px; /* Reducir el relleno */
     }
-
     #AlertaModal > div > h2, 
     #AlertaModal > div > p {
         font-size: 1.2rem; /* Reducir tamaño de fuente */
     }
-
     #AlertaModal > div > button {
         width: 100%; /* Hacer que el botón ocupe todo el ancho */
         height: 50px; /* Reducir altura del botón */
+    }
+}
+/* Media Queries para diferentes tamaños de pantalla */
+@media (max-width: 768px) {
+    #TablaJuego {
+        height: 300px;
+        width: 300px;
+    }
+
+    #ListaPalabras {
+        width: 90%; /* Asegura que la lista ocupe casi todo el ancho en pantallas pequeñas */
+        border-width: 10px; /* Reduce el tamaño del borde */
+    }
+}
+
+@media (max-width: 480px) {
+    #TablaJuego {
+        height: 200px;
+        width: 200px;
+    }
+
+    #ListaPalabras {
+        width: 100%; /* Ocupar el ancho completo */
+        border-width: 5px; /* Reduce aún más el tamaño del borde */
+    }
+    #ContenedorJuego {
+        flex-direction: column; /* Acomoda los elementos en una columna */
     }
 }

@@ -31,7 +31,7 @@ async function FormarPalabra(Palabra) {
         ElementoP.append(PalabraFormada)
         ElementoP.className = "PalabraFormada"
         SumarPuntos()
-        resetarEstiloCelda()
+        ResetarEstiloCelda()
         RemoverLetra(RemoverTodasPalabras)
         PalabraFormada = PalabraFormada + "-"
         PalabrasFormadas = PalabrasFormadas + PalabraFormada
@@ -117,7 +117,7 @@ function TiempoTerminado(){
             }
             if(event.currentTarget.innerHTML === "Salir"){
                 AlertaModal.style.display = "none"
-                window.open("/html/registro.html", "_self")
+                window.open("/html/index.html", "_self")
             }
         })
     }

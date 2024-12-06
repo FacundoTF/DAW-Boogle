@@ -11,7 +11,7 @@ async function FormarPalabra(Palabra) {
     var PalabraValida
     var PalabraRepetida
     var RemoverTodasPalabras
-    if(typeof(Palabra) != "string"){
+    if(typeof(Palabra) !== "string"){
         return
     }
     if(Palabra.length < 3){

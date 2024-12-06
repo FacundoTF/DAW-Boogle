@@ -116,7 +116,7 @@ function TiempoTerminado(){
             }
             if(Event.currentTarget.textContent === "Salir"){
                 AlertaModal.style.display = "none"
-                window.open("/Index.html", "_self")
+                window.open("/index.html", "_self")
             }
         })
     }

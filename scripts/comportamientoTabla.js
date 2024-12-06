@@ -11,13 +11,13 @@ async function ComportamientoCeldas(){
     var MismaCelda
     var CeldasRestantes
     var RemoverTodasPalabras
-    for (var i = 0; i < Celdas.length; i++) {
-        Celdas[i].addEventListener("click", (event)=>{
+    for (var I = 0; I < Celdas.length; I++) {
+        Celdas[I].addEventListener("click", function(Event){
             Letras = localStorage.getItem("Palabra")
             CeldasSeleccionadas = localStorage.getItem("Ultima Celda")
-            MismaCelda = DeseleccionarCelda(event.target)
+            MismaCelda = DeseleccionarCelda(Event.target)
             if(MismaCelda){
-                event.currentTarget.style.background = "#FFFFFF"
+                Event.currentTarget.style.background = "#FFFFFF"
                 RemoverTodasPalabras = false
                 LetrasRestantes = Letras.slice(0,-1)
                 CeldasRestantes = CeldasSeleccionadas.slice(0,-13)
@@ -27,20 +27,20 @@ async function ComportamientoCeldas(){
                 return
             }
             if(Letras.length >= 1){
-                CeldaValida = ValidarCeldasContiguas(event.target,CeldasSeleccionadas)
+                CeldaValida = ValidarCeldasContiguas(Event.target,CeldasSeleccionadas)
                 if(CeldaValida === false){
                     RemoverTodasPalabras = true
                     RemoverLetra(RemoverTodasPalabras)
                     return
                 }
-                localStorage.setItem("Palabra", Letras + event.currentTarget.innerHTML)
-                VisualizarLetra(event.currentTarget.innerText)
+                localStorage.setItem("Palabra", Letras + Event.currentTarget.innerHTML)
+                VisualizarLetra(Event.currentTarget.innerText)
             }else{
-                localStorage.setItem("Palabra", event.currentTarget.innerHTML)
-                VisualizarLetra(event.currentTarget.innerText)
+                localStorage.setItem("Palabra", Event.currentTarget.innerHTML)
+                VisualizarLetra(Event.currentTarget.innerText)
             }
-            localStorage.setItem("Ultima Celda", `${CeldasSeleccionadas}/fila:${event.target.parentElement.rowIndex+1}-col:${event.target.cellIndex+1}`)
-            event.currentTarget.style.background = "#FF0000"
+            localStorage.setItem("Ultima Celda", `${CeldasSeleccionadas}/fila:${Event.target.parentElement.rowIndex+1}-col:${Event.target.cellIndex+1}`)
+            Event.currentTarget.style.background = "#FF0000"
             FormarPalabra(localStorage.getItem("Palabra"))
         })
     }
@@ -59,8 +59,8 @@ function DeseleccionarCelda(Celda){
     }
 }
 function ResetarEstiloCelda(){
-    for (var i = 0; i < Celdas.length; i++) {
-        Celdas[i].style.background = "#FFFFFF"
+    for (var I = 0; I < Celdas.length; I++) {
+        Celdas[I].style.background = "#FFFFFF"
     }
     localStorage.setItem("Palabra", "")
 }

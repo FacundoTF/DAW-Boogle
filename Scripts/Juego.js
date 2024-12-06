@@ -11,7 +11,7 @@ async function FormarPalabra(Palabra) {
     var PalabraValida
     var PalabraRepetida
     var RemoverTodasPalabras
-    if(typeof(Palabra) != "string"){
+    if(typeof(Palabra) !== "string"){
         return
     }
     if(Palabra.length < 3){
@@ -74,11 +74,11 @@ function IniciarTabla() {
     var Celda
     var PalabraNumero
     var LetraElegida
-    for (var i = 0; i < Celdas.length; i++) {
-        var Celda = Celdas.item(i)
+    for (var I = 0; I < Celdas.length; I++) {
+        var Celda = Celdas.item(I)
         PalabraNumero = Math.floor(Math.random() * Abecedario.length) + 1
         LetraElegida = Abecedario.slice(PalabraNumero - 1, PalabraNumero)
-        Celda.innerHTML = LetraElegida
+        Celda.textContent = LetraElegida
     }
 }
 function MostrarEstadisticas(){
@@ -86,13 +86,13 @@ function MostrarEstadisticas(){
     var PalabrasEncontradas = localStorage.getItem("Palabras formadas").split("-")
     var PalabraMasLarga = ""
     PalabrasEncontradas.pop()
-    for (var i = 0; i < PalabrasEncontradas.length; i++) {
+    for (var I = 0; I < PalabrasEncontradas.length; I++) {
         if(PalabraMasLarga === ""){
-            PalabraMasLarga = PalabrasEncontradas[i]
+            PalabraMasLarga = PalabrasEncontradas[I]
             continue
         }
-        if(PalabraMasLarga.length < PalabrasEncontradas[i].length){
-            PalabraMasLarga = PalabrasEncontradas[i]
+        if(PalabraMasLarga.length < PalabrasEncontradas[I].length){
+            PalabraMasLarga = PalabrasEncontradas[I]
         }
     }
     document.getElementById("PuntosTotales").textContent = `Puntaje total: ${PuntajeTotal}`
@@ -104,19 +104,19 @@ function TiempoTerminado(){
     var AlertaModal = document.getElementById("AlertaModal")
     var Botones = document.querySelectorAll(".AlertaModalBoton")
     AlertaModal.style.display = "flex"
-    for (var i = 0; i < Botones.length; i++) {
-        Botones[i].addEventListener("click", event => {
-            if(event.currentTarget.innerHTML === "Volver a jugar"){
+    for (var I = 0; I < Botones.length; I++) {
+        Botones[I].addEventListener("click", function(Event){
+            if(Event.currentTarget.textContent === "Volver a jugar"){
                 AlertaModal.style.display = "none"
                 location.reload()
             }
-            if(event.currentTarget.innerHTML === "Registrar puntaje"){
+            if(Event.currentTarget.textContent === "Contactanos"){
                 AlertaModal.style.display = "none"
-                window.open("", "_self")//Iria a la página de contacto
+                window.open("/Html/Contacto.html", "_self")
             }
-            if(event.currentTarget.innerHTML === "Salir"){
+            if(Event.currentTarget.textContent === "Salir"){
                 AlertaModal.style.display = "none"
-                window.open("/html/index.html", "_self")
+                window.open("/Html/Index.html", "_self")
             }
         })
     }

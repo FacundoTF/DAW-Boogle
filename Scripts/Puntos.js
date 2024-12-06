@@ -7,12 +7,9 @@ function SumarPuntos() {
 }
 function RestarPuntos(){
     var PuntajeRestar = parseInt(localStorage.getItem("Puntaje"))
-    PuntajeRestar -= 10
+    PuntajeRestar -= 2
     if(PuntajeRestar < 0){
         PuntajeRestar = 0
     }
     localStorage.setItem("Puntaje", `${PuntajeRestar}`)
-}
-function ResetarPuntos(){
-    localStorage.setItem("Puntaje", 0)
 }

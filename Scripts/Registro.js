@@ -12,7 +12,7 @@ document.querySelector("#BotonInicio").addEventListener("click", function() {
         return
     }
     sessionStorage.setItem("Jugador", Nombre)
-    window.open("/Html/Juego.html", "_self")
+    window.open("./Html/Juego.html", "_self")
 })
 document.querySelector(".AlertaModalBoton").addEventListener("click", function() {
     AlertaModal.style.display = "none"

@@ -112,11 +112,11 @@ function TiempoTerminado(){
             }
             if(Event.currentTarget.textContent === "Contactanos"){
                 AlertaModal.style.display = "none"
-                window.open("/html/contacto.html", "_self")
+                window.open("/Html/Contacto.html", "_self")
             }
             if(Event.currentTarget.textContent === "Salir"){
                 AlertaModal.style.display = "none"
-                window.open("/html/index.html", "_self")
+                window.open("/Html/Index.html", "_self")
             }
         })
     }

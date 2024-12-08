@@ -88,6 +88,7 @@ footer ul li {
     height: 60px;
     justify-items: center;
     font-size: 60px
+    text-decoration none;
 }
 #Registro{
     position: relative;

@@ -52,8 +52,8 @@ Formulario.addEventListener("submit", function (E) {
         var Correo = document.getElementById("correo").value
         var Mensaje = document.getElementById("mensaje").value
         var Asunto = "Consulta de " + Nombre;
-        var Body = "Nombre: " + Nombre + "%0AEmail: " + Correo + "%0AMensaje: " + Mensaje
-        var MailtoLink = "mailto:tuemail@ejemplo.com?subject=" + encodeURIComponent(Asunto) + "&Body=" + encodeURIComponent(Body)
+        var Body = "Nombre: " + Nombre + " Email: " + Correo + " Mensaje: " + Mensaje
+        var MailtoLink = "mailto:tuemail@ejemplo.com?subject=" + encodeURIComponent(Asunto) + "&body=" + encodeURIComponent(Body)
         window.location.href = MailtoLink
         document.getElementById("formulario__mensaje-exito").style.display = "block"
         Formulario.reset()
